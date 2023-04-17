@@ -1,0 +1,1010 @@
+{
+    "schema": {
+        "options": {
+            "path": ""
+        },
+        "crud_objects": {
+            "groups": {
+                "operations": {
+                    "group_create": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/groups",
+                            "post_processing": "child_tables"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "displayName",
+                            "mailEnabled",
+                            "mailNickname",
+                            "securityEnabled"
+                        ],
+                        "resource_prohibited": [
+                            "assignedLabels",
+                            "assignedLicenses",
+                            "createdDateTime",
+                            "expirationDateTime",
+                            "id",
+                            "licenseProcessingState",
+                            "mail",
+                            "onPremisesLastSyncDateTime",
+                            "onPremisesSamAccountName",
+                            "onPremisesSecurityIdentifier",
+                            "onPremisesSyncEnabled",
+                            "proxyAddresses",
+                            "renewedDateTime"
+                        ]
+                    },
+                    "group_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/groups/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "id"
+                        ]
+                    },
+                    "groups_get": {
+                        "method": "get"
+                    },
+                    "group_update": {
+                        "method": "patch",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/groups/{id}",
+                            "post_processing": "child_tables"
+                        },
+                        "semantics": "update",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id"
+                        ],
+                        "resource_prohibited": [
+                            "assignedLabels",
+                            "assignedLicenses",
+                            "classification",
+                            "createdDateTime",
+                            "expirationDateTime",
+                            "groupTypes",
+                            "hasMembersWithLicenseErrors",
+                            "isAssignableRole",
+                            "licenseProcessingState",
+                            "mail",
+                            "mailEnabled",
+                            "onPremisesLastSyncDateTime",
+                            "onPremisesProvisioningErrors",
+                            "onPremisesSamAccountName",
+                            "onPremisesSecurityIdentifier",
+                            "onPremisesSyncEnabled",
+                            "proxyAddresses",
+                            "renewedDateTime",
+                            "resourceBehaviorOptions",
+                            "resourceProvisioningOptions",
+                            "securityIdentifier"
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "assignedLabels": {
+                        "labelId": "string",
+                        "displayName": "_:string"
+                    },
+                    "assignedLicenses": [
+                        {
+                            "disabledPlans": [
+                                "guid*"
+                            ],
+                            "skuId": "guid*"
+                        }
+                    ],
+                    "classification": "string*",
+                    "createdDateTime": "string (timestamp)",
+                    "deletedDateTime": "string (timestamp)",
+                    "description": "string",
+                    "displayName": "string*",
+                    "expirationDateTime": "string (timestamp)",
+                    "groupTypes": [
+                        "string*"
+                    ],
+                    "hasMembersWithLicenseErrors": "boolean",
+                    "id": "string (identifier)*",
+                    "isAssignableRole": "boolean",
+                    "licenseProcessingState": "string",
+                    "mail": "string*",
+                    "mailEnabled": "boolean*",
+                    "mailNickname": "string*",
+                    "onPremisesLastSyncDateTime": "string (timestamp)",
+                    "onPremisesProvisioningErrors": [
+                        {
+                            "category": "string*",
+                            "occurredDateTime": "string (timestamp)*",
+                            "propertyCausingError": "string*",
+                            "value": "string*"
+                        }
+                    ],
+                    "onPremisesSamAccountName": "string",
+                    "onPremisesSecurityIdentifier": "string",
+                    "onPremisesSyncEnabled": "boolean",
+                    "preferredDataLocation": "string",
+                    "proxyAddresses": [
+                        "string"
+                    ],
+                    "renewedDateTime": "string (timestamp)",
+                    "resourceBehaviorOptions": [
+                        "string"
+                    ],
+                    "resourceProvisioningOptions": [
+                        "string*"
+                    ],
+                    "securityEnabled": "boolean*",
+                    "securityIdentifier": "string",
+                    "visibility": "string"
+                },
+                "resources_with_issues": {
+                    "get_single_item_only": {
+                        "allowExternalSenders": "boolean",
+                        "autoSubscribeNewMembers": "boolean",
+                        "hideFromAddressLists": "boolean",
+                        "hideFromOutlookClients": "boolean",
+                        "isSubscribedByMail": "boolean",
+                        "unseenCount": "int32"
+                    },
+                    "to_be_considered": {
+                        "acceptedSenders": [
+                            {
+                                "@odata.type": "microsoft.graph.directoryObject"
+                            }
+                        ],
+                        "calendar": {
+                            "@odata.type": "microsoft.graph.calendar"
+                        },
+                        "calendarView": [
+                            {
+                                "@odata.type": "microsoft.graph.event"
+                            }
+                        ],
+                        "conversations": [
+                            {
+                                "@odata.type": "microsoft.graph.conversation"
+                            }
+                        ],
+                        "createdOnBehalfOf": {
+                            "@odata.type": "microsoft.graph.directoryObject"
+                        },
+                        "drive": {
+                            "@odata.type": "microsoft.graph.drive"
+                        },
+                        "events": [
+                            {
+                                "@odata.type": "microsoft.graph.event"
+                            }
+                        ],
+                        "memberOf": [
+                            {
+                                "@odata.type": "microsoft.graph.directoryObject"
+                            }
+                        ],
+                        "members": [
+                            {
+                                "@odata.type": "microsoft.graph.directoryObject"
+                            }
+                        ],
+                        "membersWithLicenseErrors": [
+                            {
+                                "@odata.type": "microsoft.graph.user"
+                            }
+                        ],
+                        "owners": [
+                            {
+                                "@odata.type": "microsoft.graph.directoryObject"
+                            }
+                        ],
+                        "photo": {
+                            "@odata.type": "microsoft.graph.profilePhoto"
+                        },
+                        "rejectedSenders": [
+                            {
+                                "@odata.type": "microsoft.graph.directoryObject"
+                            }
+                        ],
+                        "sites": [
+                            {
+                                "@odata.type": "microsoft.graph.site"
+                            }
+                        ],
+                        "threads": [
+                            {
+                                "@odata.type": "microsoft.graph.conversationThread"
+                            }
+                        ]
+                    }
+                }
+            },
+            "members": {
+                "operations": {
+                    "member_add": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/groups/{group_id}/members/$ref"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "group_id",
+                            "id"
+                        ],
+                        "body": {
+                            "@odata.id": "https://graph.microsoft.com/v1.0/directoryObjects/{id}"
+                        }
+                    },
+                    "members_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "groups",
+                            "iterator": "id",
+                            "path": "/groups/{iterator}/members",
+                            "base": {
+                                "group_id": "{iterator}"
+                            }
+                        },
+                        "maxSessionCount": 20
+                    },
+                    "member_remove": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/groups/{group_id}/members/{id}/$ref"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "group_id",
+                            "id"
+                        ]
+                    }
+                },
+                "groupmembership": {
+                    "add_operation": "member_add",
+                    "remove_operation": "member_remove",
+                    "member_table": "users",
+                    "group_table": "groups",
+                    "member_attributes": {
+                        "id": "id"
+                    },
+                    "group_attributes": {
+                        "id": "group_id"
+                    }
+                },
+                "resources": {
+                    "group_id": "_nim*",
+                    "id": "string*"
+                }
+            },
+            "owners": {
+                "operations": {
+                    "owner_add": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/groups/{group_id}/owners/$ref"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "group_id",
+                            "id"
+                        ],
+                        "body": {
+                            "@odata.id": "https://graph.microsoft.com/v1.0/directoryObjects/{id}"
+                        }
+                    },
+                    "owners_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "groups",
+                            "iterator": "id",
+                            "path": "/groups/{iterator}/owners",
+                            "base": {
+                                "group_id": "{iterator}"
+                            }
+                        },
+                        "maxSessionCount": 20
+                    },
+                    "owner_remove": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/groups/{group_id}/owners/{id}/$ref"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "group_id",
+                            "id"
+                        ]
+                    }
+                },
+                "groupmembership": {
+                    "add_operation": "owner_add",
+                    "remove_operation": "owner_remove",
+                    "member_table": "users",
+                    "group_table": "groups",
+                    "member_attributes": {
+                        "id": "id"
+                    },
+                    "group_attributes": {
+                        "id": "group_id"
+                    }
+                },
+                "resources": {
+                    "group_id": "_nim*",
+                    "id": "string*"
+                }
+            },
+            "teams": {
+                "operations": {
+                    "team_archive": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/teams/{id}/archive",
+                            "post_processing": "child_tables"
+                        },
+                        "semantics": "set",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "id"
+                        ]
+                    },
+                    "team_create": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/teams",
+                            "post_processing": "child_tables"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "ownerId",
+                            "displayName",
+                            "templateType"
+                        ],
+                        "resource_prohibited": [
+                            "createdDateTime",
+                            "id",
+                            "internalId",
+                            "webUrl"
+                        ],
+                        "body": {
+                            "template@odata.bind": "https://graph.microsoft.com/v1.0/teamsTemplates('{templateType}')",
+                            "members":[
+                                {
+                                   "@odata.type":"#microsoft.graph.aadUserConversationMember",
+                                   "roles":["owner"],
+                                   "user@odata.bind":"https://graph.microsoft.com/v1.0/users('{ownerId}')"
+                                }
+                            ]
+                        }
+                    },
+                    "team_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/groups/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "id"
+                        ]
+                    },
+                    "teams_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "groups",
+                            "iterator": "id",
+                            "filter": {
+                                "attribute": "resourceProvisioningOptions",
+                                "operation": "contains",
+                                "value": "Team"
+                            },
+                            "path": "/teams/{iterator}"
+                        },
+                        "maxPageCount": -1,
+                        "maxSessionCount": 20
+                    },
+                    "team_unarchive": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/teams/{id}/unarchive",
+                            "post_processing": "child_tables"
+                        },
+                        "semantics": "set",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "id"
+                        ]
+                    },
+                    "team_update": {
+                        "method": "patch",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/teams/{id}",
+                            "post_processing": "child_tables"
+                        },
+                        "semantics": "update",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id"
+                        ],
+                        "resource_prohibited": [
+                            "classification",
+                            "createdDateTime",
+                            "internalId",
+                            "isArchived",
+                            "webUrl"
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "classification": "string*",
+                    "createdDateTime": "string (timestamp)",
+                    "description": "string",
+                    "discoverySettings": {
+                        "showInTeamsSearchAndSuggestions": "boolean"
+                    },
+                    "displayName": "string*",
+                    "funSettings": {
+                        "allowGiphy": "boolean",
+                        "allowCustomMemes": "boolean",
+                        "allowStickersAndMemes": "boolean",
+                        "giphyContentRating": "string"
+                    },
+                    "guestSettings": {
+                        "allowCreateUpdateChannels": "boolean",
+                        "allowDeleteChannels": "boolean"
+                    },
+                    "id": "string (identifier)*",
+                    "internalId": "string",
+                    "isArchived": "boolean",
+                    "isMembershipLimitedToOwners": "boolean",
+                    "memberSettings": {
+                        "allowAddRemoveApps": "boolean",
+                        "allowCreatePrivateChannels": "boolean",
+                        "allowCreateUpdateChannels": "boolean",
+                        "allowCreateUpdateRemoveConnectors": "boolean",
+                        "allowCreateUpdateRemoveTabs": "boolean",
+                        "allowDeleteChannels": "boolean"
+                    },
+                    "messagingSettings": {
+                        "allowChannelMentions": "boolean",
+                        "allowOwnerDeleteMessages": "boolean",
+                        "allowTeamMentions": "boolean",
+                        "allowUserDeleteMessages": "boolean",
+                        "allowUserEditMessages": "boolean"
+                    },
+                    "ownerId": "_nim",
+                    "specialization": "string",
+                    "summary": "string",
+                    "templateType": "_nim",
+                    "visibility": "string",
+                    "webUrl": "string"
+                }
+            },
+            "users": {
+                "operations": {
+                    "user_create": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users",
+                            "post_processing": "child_tables"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "accountEnabled",
+                            "displayName",
+                            "mailNickname",
+                            "password",
+                            "userPrincipalName"
+                        ],
+                        "resource_prohibited": [
+                            "assignedLicenses",
+                            "assignedPlans",
+                            "createdDateTime",
+                            "creationType",
+                            "externalUserStateChangeDateTime",
+                            "id",
+                            "imAddresses",
+                            "isResourceAccount",
+                            "lastPasswordChangeDateTime",
+                            "legalAgeGroupClassification",
+                            "licenseAssignmentStates",
+                            "onPremisesDistinguishedName",
+                            "onPremisesDomainName",
+                            "onPremisesLastSyncDateTime",
+                            "onPremisesProvisioningErrors",
+                            "onPremisesSamAccountName",
+                            "onPremisesSecurityIdentifier",
+                            "onPremisesSyncEnabled",
+                            "onPremisesUserPrincipalName",
+                            "provisionedPlans",
+                            "proxyAddresses",
+                            "refreshTokensValidFromDateTime",
+                            "signInSessionsValidFromDateTime"
+                        ]
+                    },
+                    "user_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "id"
+                        ]
+                    },
+                    "users_get": {
+                        "method": "get"
+                    },
+                    "user_update": {
+                        "method": "patch",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{id}",
+                            "post_processing": "child_tables"
+                        },
+                        "semantics": "update",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id"
+                        ],
+                        "resource_prohibited": [
+                            "assignedLicenses",
+                            "assignedPlans",
+                            "createdDateTime",
+                            "creationType",
+                            "externalUserStateChangeDateTime",
+                            "identities",
+                            "imAddresses",
+                            "isResourceAccount",
+                            "lastPasswordChangeDateTime",
+                            "legalAgeGroupClassification",
+                            "licenseAssignmentStates",
+                            "onPremisesDistinguishedName",
+                            "onPremisesDomainName",
+                            "onPremisesLastSyncDateTime",
+                            "onPremisesProvisioningErrors",
+                            "onPremisesSamAccountName",
+                            "onPremisesSecurityIdentifier",
+                            "onPremisesSyncEnabled",
+                            "onPremisesUserPrincipalName",
+                            "provisionedPlans",
+                            "proxyAddresses",
+                            "refreshTokensValidFromDateTime",
+                            "signInSessionsValidFromDateTime"
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "accountEnabled": "boolean*",
+                    "ageGroup": "string",
+                    "assignedLicenses": [
+                        {
+                            "disabledPlans": [
+                                "guid*"
+                            ],
+                            "skuId": "guid*"
+                        }
+                    ],
+                    "assignedPlans": [
+                        {
+                            "assignedDateTime": "string (timestamp)",
+                            "capabilityStatus": "string*",
+                            "service": "string*",
+                            "servicePlanId": "guid*"
+                        }
+                    ],
+                    "businessPhones": [
+                        "string*"
+                    ],
+                    "city": "string",
+                    "companyName": "string",
+                    "consentProvidedForMinor": "string",
+                    "country": "string",
+                    "createdDateTime": "string (timestamp)",
+                    "creationType": "string",
+                    "deletedDateTime": "string (timestamp)",
+                    "department": "string",
+                    "displayName": "string*",
+                    "employeeHireDate": "string (timestamp)",
+                    "employeeId": "string*",
+                    "employeeOrgData": {
+                        "costCenter": "string",
+                        "division": "string"
+                    },
+                    "employeeType": "string",
+                    "externalUserState": "string",
+                    "externalUserStateChangeDateTime": "string (timestamp)",
+                    "faxNumber": "string",
+                    "givenName": "string*",
+                    "id": "string (identifier)*",
+                    "identities": [
+                        {
+                            "issuer": "string*",
+                            "issuerAssignedId": "string*",
+                            "signInType": "string*"
+                        }
+                    ],
+                    "imAddresses": [
+                        "string"
+                    ],
+                    "isResourceAccount": "boolean",
+                    "jobTitle": "string*",
+                    "lastPasswordChangeDateTime": "string (timestamp)",
+                    "legalAgeGroupClassification": "string",
+                    "licenseAssignmentStates": [
+                        {
+                            "assignedByGroup": "string*",
+                            "disabledPlans": "collection (string)*",
+                            "error": "string*",
+                            "lastUpdatedDateTime": "string (timestamp)",
+                            "skuId": "string*",
+                            "state": "string*"
+                        }
+                    ],
+                    "mail": "string*",
+                    "mailNickname": "string*",
+                    "mobilePhone": "string*",
+                    "officeLocation": "string*",
+                    "onPremisesDistinguishedName": "string",
+                    "onPremisesDomainName": "string",
+                    "onPremisesExtensionAttributes": {
+                        "extensionAttribute1": "string",
+                        "extensionAttribute2": "string",
+                        "extensionAttribute3": "string",
+                        "extensionAttribute4": "string",
+                        "extensionAttribute5": "string",
+                        "extensionAttribute6": "string",
+                        "extensionAttribute7": "string",
+                        "extensionAttribute8": "string",
+                        "extensionAttribute9": "string",
+                        "extensionAttribute10": "string",
+                        "extensionAttribute11": "string",
+                        "extensionAttribute12": "string",
+                        "extensionAttribute13": "string",
+                        "extensionAttribute14": "string",
+                        "extensionAttribute15": "string"
+                    },
+                    "onPremisesImmutableId": "string",
+                    "onPremisesLastSyncDateTime": "string (timestamp)",
+                    "onPremisesProvisioningErrors": [
+                        {
+                            "category": "string*",
+                            "occurredDateTime": "string (timestamp)*",
+                            "propertyCausingError": "string*",
+                            "value": "string*"
+                        }
+                    ],
+                    "onPremisesSamAccountName": "string",
+                    "onPremisesSecurityIdentifier": "string",
+                    "onPremisesSyncEnabled": "boolean",
+                    "onPremisesUserPrincipalName": "string",
+                    "otherMails": [
+                        "string"
+                    ],
+                    "passwordPolicies": "string",
+                    "passwordProfile": {
+                        "forceChangePasswordNextSignIn": "boolean",
+                        "forceChangePasswordNextSignInWithMfa": "boolean",
+                        "password": "string"
+                    },
+                    "postalCode": "string",
+                    "preferredDataLocation": "string",
+                    "preferredLanguage": "string*",
+                    "provisionedPlans": [
+                        {
+                            "capabilityStatus": "string*",
+                            "provisioningStatus": "string*",
+                            "service": "string*"
+                        }
+                    ],
+                    "proxyAddresses": [
+                        "string"
+                    ],
+                    "refreshTokensValidFromDateTime": "string (timestamp)",
+                    "showInAddressList": "boolean",
+                    "signInSessionsValidFromDateTime": "string (timestamp)",
+                    "state": "string",
+                    "streetAddress": "string",
+                    "surname": "string*",
+                    "usageLocation": "string",
+                    "userPrincipalName": "string*",
+                    "userType": "string"
+                },
+                "resources_with_issues": {
+                    "get_single_item_only": {
+                        "aboutMe": "string",
+                        "birthday": "string (timestamp)",
+                        "hireDate": "string (timestamp)",
+                        "interests": [
+                            "string"
+                        ],
+                        "mailboxSettings": {
+                            "archiveFolder": "string",
+                            "automaticRepliesSetting": {
+                                "externalAudience": "string",
+                                "externalReplyMessage": "string",
+                                "internalReplyMessage": "string",
+                                "scheduledEndDateTime": {
+                                    "dateTime": "string",
+                                    "timeZone": "string"
+                                },
+                                "scheduledStartDateTime": {
+                                    "dateTime": "string",
+                                    "timeZone": "string"
+                                },
+                                "status": "string"
+                            },
+                            "dateFormat": "string",
+                            "delegateMeetingMessageDeliveryOptions": "string",
+                            "language": {
+                                "locale": "string",
+                                "displayName": "string"
+                            },
+                            "timeFormat": "string",
+                            "timeZone": "string",
+                            "workingHours": {
+                                "daysOfWeek": [
+                                    "string"
+                                ],
+                                "startTime": "string (timeofday)",
+                                "endTime": "string (timeofday)",
+                                "timeZone": {
+                                    "name": "string"
+                                }
+                            }
+                        },
+                        "mySite": "string",
+                        "pastProjects": [
+                            "string"
+                        ],
+                        "preferredName": "string",
+                        "responsibilities": [
+                            "string"
+                        ],
+                        "schools": [
+                            "string"
+                        ],
+                        "skills": [
+                            "string"
+                        ]
+                    },
+                    "to_be_considered": {
+                        "calendar": {
+                            "@odata.type": "microsoft.graph.calendar"
+                        },
+                        "calendarGroups": [
+                            {
+                                "@odata.type": "microsoft.graph.calendarGroup"
+                            }
+                        ],
+                        "calendarView": [
+                            {
+                                "@odata.type": "microsoft.graph.event"
+                            }
+                        ],
+                        "calendars": [
+                            {
+                                "@odata.type": "microsoft.graph.calendar"
+                            }
+                        ],
+                        "contacts": [
+                            {
+                                "@odata.type": "microsoft.graph.contact"
+                            }
+                        ],
+                        "contactFolders": [
+                            {
+                                "@odata.type": "microsoft.graph.contactFolder"
+                            }
+                        ],
+                        "createdObjects": [
+                            {
+                                "@odata.type": "microsoft.graph.directoryObject"
+                            }
+                        ],
+                        "directReports": [
+                            {
+                                "@odata.type": "microsoft.graph.directoryObject"
+                            }
+                        ],
+                        "drive": {
+                            "@odata.type": "microsoft.graph.drive"
+                        },
+                        "drives": [
+                            {
+                                "@odata.type": "microsoft.graph.drive"
+                            }
+                        ],
+                        "events": [
+                            {
+                                "@odata.type": "microsoft.graph.event"
+                            }
+                        ],
+                        "inferenceClassification": {
+                            "@odata.type": "microsoft.graph.inferenceClassification"
+                        },
+                        "mailFolders": [
+                            {
+                                "@odata.type": "microsoft.graph.mailFolder"
+                            }
+                        ],
+                        "manager": {
+                            "@odata.type": "microsoft.graph.directoryObject"
+                        },
+                        "memberOf": [
+                            {
+                                "@odata.type": "microsoft.graph.directoryObject"
+                            }
+                        ],
+                        "messages": [
+                            {
+                                "@odata.type": "microsoft.graph.message"
+                            }
+                        ],
+                        "outlook": {
+                            "@odata.type": "microsoft.graph.outlookUser"
+                        },
+                        "ownedDevices": [
+                            {
+                                "@odata.type": "microsoft.graph.directoryObject"
+                            }
+                        ],
+                        "ownedObjects": [
+                            {
+                                "@odata.type": "microsoft.graph.directoryObject"
+                            }
+                        ],
+                        "photo": {
+                            "@odata.type": "microsoft.graph.profilePhoto"
+                        },
+                        "registeredDevices": [
+                            {
+                                "@odata.type": "microsoft.graph.directoryObject"
+                            }
+                        ]
+                    }
+                }
+            },
+            "risky_users": {
+                "operations": {
+                    "risky_users_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/identityProtection/riskyUsers"
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        },
+                        "query_parameters": {}
+                    },
+                    "risky_users_confirm": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/identityProtection/riskyUsers/confirmCompromised"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "id"
+                        ],
+                        "body": {
+                            "userIds":["{id}"]
+                        }
+                    },
+                    "risky_users_dismiss": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/identityProtection/riskyUsers/dismiss"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "id"
+                        ],
+                        "body": {
+                            "userIds":["{id}"]
+                        }
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "isDeleted": "boolean*",
+                    "isProcessing": "boolean*",
+                    "riskLastUpdatedDateTime": "string*",
+                    "riskLevel": "string*",
+                    "riskState": "string*",
+                    "riskDetail": "string*",
+                    "userDisplayName": "string*",
+                    "userPrincipalName": "string*"
+                }
+            }
+        }
+    },
+    "rest": {
+        "config": {
+            "baseUrl": "https://graph.microsoft.com/v1.0/",
+            "get": {
+                "maxPageCount": 999,
+                "query_parameters": {}
+            },
+            "authentication": "certificate",
+            "call_handling": "azure",
+            "test_connection": {
+                "url": "/users"
+            }
+        },
+        "authOptions": {
+            "scopes": [
+                "https://graph.microsoft.com/.default"
+            ],
+            "authUrl": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+            "type": "signed-jwt",
+            "postData": {
+                "client_id": {
+                    "name": "clientId"
+                },
+                "scope": {
+                    "name": "scope"
+                },
+                "client_assertion_type": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+                "client_assertion": {
+                    "name": "JWT"
+                },
+                "grant_type": "client_credentials"
+            },
+            "JWT": {
+                "aud": {
+                    "name": "endpoint"
+                },
+                "exp": {
+                    "name": "oneHour"
+                },
+                "iss": {
+                    "name": "clientId"
+                },
+                "jti": {
+                    "name": "guid"
+                },
+                "nbf": {
+                    "name": "now"
+                },
+                "sub": {
+                    "name": "clientId"
+                }
+            }
+        }
+    }
+}
