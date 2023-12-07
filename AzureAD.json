@@ -263,7 +263,7 @@
                             "mode": "normal",
                             "path": "/groups/{group_id}/members/{id}/$ref"
                         },
-                        "semantics": "create",
+                        "semantics": "delete",
                         "resource_allowance_default": "prohibited",
                         "resource_mandatory": [
                             "group_id",
@@ -286,6 +286,40 @@
                 "resources": {
                     "group_id": "_nim*",
                     "id": "string*"
+                }
+            },
+            "licenses": {
+                "operations": {
+                    "licenses_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/subscribedSkus"
+                        },
+                        "maxPageCount": -1
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "appliesTo": "String*",
+                    "capabilityStatus": "String*",
+                    "consumedUnits": "Int32*",
+                    "id": "String (identifier)*",
+                    "prepaidUnits": {
+                        "enabled": "_:Int32*",
+                        "suspended": "_:Int32*",
+                        "warning": "_:Int32*"
+                    },
+                    "servicePlans": [
+                        {
+                            "servicePlanId": "Guid*",
+                            "servicePlanName": "String*",
+                            "provisioningStatus": "String*",
+                            "appliesTo": "String*"
+                        }
+                    ],
+                    "skuId": "Guid*",
+                    "skuPartNumber": "String*"
                 }
             },
             "owners": {
@@ -325,7 +359,7 @@
                             "mode": "normal",
                             "path": "/groups/{group_id}/owners/{id}/$ref"
                         },
-                        "semantics": "create",
+                        "semantics": "delete",
                         "resource_allowance_default": "prohibited",
                         "resource_mandatory": [
                             "group_id",
@@ -454,6 +488,8 @@
                             "createdDateTime",
                             "internalId",
                             "isArchived",
+                            "ownerId",
+                            "templateType",
                             "webUrl"
                         ]
                     }
@@ -714,7 +750,7 @@
                     "passwordProfile": {
                         "forceChangePasswordNextSignIn": "boolean",
                         "forceChangePasswordNextSignInWithMfa": "boolean",
-                        "password": "string"
+                        "password": "string^"
                     },
                     "postalCode": "string",
                     "preferredDataLocation": "string",
@@ -894,7 +930,7 @@
                     }
                 }
             },
-            "risky_users": {
+			"risky_users": {
                 "operations": {
                     "risky_users_get": {
                         "method": "get",
