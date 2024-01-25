@@ -636,7 +636,19 @@
                             "refreshTokensValidFromDateTime",
                             "signInSessionsValidFromDateTime"
                         ]
-                    }
+                    },
+					"user_update_revokeSignInSessions": {
+						"method": "post",
+						"call": {
+						  "mode": "normal",
+						  "path": "/users/{id}/revokeSignInSessions",
+						  "post_processing": "child_tables"
+						},
+						"resource_allowance_default": "prohibited",
+						"resource_mandatory": [
+						  "id"
+						]
+					}
                 },
                 "key": "id",
                 "resources": {
