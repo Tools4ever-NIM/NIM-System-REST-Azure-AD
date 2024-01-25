@@ -26,6 +26,7 @@
    - Confirm/Dismiss
 - Users
     - Create/Update/Delete
+    - Revoke Sign-in Sessions
  
 
 # NIM Docs
