@@ -322,6 +322,81 @@
                     "skuPartNumber": "String*"
                 }
             },
+            "license_members": {
+                "operations": {
+                    "license_member_add": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{id}/assignLicense"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "id",
+                            "skuId"
+                        ],
+                        "body": {
+                            "addLicenses": [
+                                {
+                                    "_nim_merge_attributes_": true
+                                }
+                              ]
+                        }
+                    },
+                    "license_members_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "licenses",
+                            "iterator": "skuId",
+                            "path": "/users?$filter=assignedLicenses/any(u:u/skuId eq {iterator}) ",
+                            "base": {
+                                "skuId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        },
+                        "query_parameters": {
+                        },
+                        "maxSessionCount": 20
+                    },
+                    "license_member_remove": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{id}/assignLicense"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "skuId",
+                            "id"
+                        ],
+                        "body": {
+                            "_nim_merge_attributes_": false,
+                            "removeLicenses": ["{skuId}"]
+                        }
+                    }
+                },
+                "groupmembership": {
+                    "add_operation": "license_members_add",
+                    "remove_operation": "license_members_remove",
+                    "member_table": "users",
+                    "group_table": "licenses",
+                    "member_attributes": {
+                        "id": "id"
+                    },
+                    "group_attributes": {
+                        "id": "skuId"
+                    }
+                },
+                "resources": {
+                    "id": "string*",
+                    "skuId": "string*"
+                }
+            },
             "owners": {
                 "operations": {
                     "owner_add": {
