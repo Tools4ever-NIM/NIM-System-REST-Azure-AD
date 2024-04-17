@@ -337,11 +337,11 @@
                             "skuId"
                         ],
                         "body": {
-                            "addLicenses": [
-                                {
-                                    "_nim_merge_attributes_": true
-                                }
-                              ]
+                            "_nim_merge_attributes_": false,
+                            "addLicenses": [{
+                                "skuId":"{skuId}"
+                            }],
+                            "removeLicenses": []
                         }
                     },
                     "license_members_get": {
@@ -376,7 +376,8 @@
                         ],
                         "body": {
                             "_nim_merge_attributes_": false,
-                            "removeLicenses": ["{skuId}"]
+                            "addLicenses": [],
+                            "removeLicense": ["{skuId}"]
                         }
                     }
                 },
