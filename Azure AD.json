@@ -344,6 +344,26 @@
                             "removeLicenses": []
                         }
                     },
+                    "license_member_withDisablePlans_add": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{id}/assignLicense"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "id",
+                            "skuId",
+                            "disabledPlans"
+                        ],
+                        "body": {
+                            "addLicenses": [{
+                                "_nim_merge_attributes_": true
+                            }],
+                            "removeLicenses": []
+                        }
+                    },
                     "license_members_get": {
                         "method": "get",
                         "call": {
@@ -395,7 +415,8 @@
                 },
                 "resources": {
                     "id": "string*",
-                    "skuId": "string*"
+                    "skuId": "string*",
+                    "disabledPlans": ["string*"]
                 }
             },
             "owners": {
