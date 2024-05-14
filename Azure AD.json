@@ -396,8 +396,8 @@
                         ],
                         "body": {
                             "_nim_merge_attributes_": false,
-                            "addLicenses": [],
-                            "removeLicense": ["{skuId}"]
+							"addLicenses": [],
+                            "removeLicenses": ["{skuId}"]
                         }
                     }
                 },
