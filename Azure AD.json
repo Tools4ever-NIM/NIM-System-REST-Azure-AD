@@ -876,6 +876,14 @@
                     ],
                     "refreshTokensValidFromDateTime": "string (timestamp)",
                     "showInAddressList": "boolean",
+                    "signInActivity": {
+                        "lastNonInteractiveSignInDateTime": "_:string",
+                        "lastNonInteractiveSignInRequestId": "_:string",
+                        "lastSignInDateTime": "_:string",
+                        "lastSignInRequestId": "_:string",
+                        "lastSuccessfulSignInDateTime": "_:string",
+                        "lastSuccessfulSignInRequestId": "_:string"
+                    },
                     "signInSessionsValidFromDateTime": "string (timestamp)",
                     "state": "string",
                     "streetAddress": "string",
