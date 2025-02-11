@@ -864,6 +864,78 @@
                     "userDisplayName": "string*",
                     "userPrincipalName": "string*"
                 }
+            },
+            "temporaryAccessPassMethods": {
+                "operations": {
+                    "temporaryAccessPass_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "users",
+                            "iterator": "id",
+                            "path": "/users/{iterator}/authentication/temporaryAccessPassMethods",
+                            "base": {
+                                "userId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        },
+                        "maxSessionCount": 20
+
+                    },
+                    "temporaryAccessPass_create": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/temporaryAccessPassMethods"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "temporaryAccessPass",
+                            "createdDateTime",
+                            "isUsable",
+                            "methodUsabilityReason"
+                        ]
+                    },
+                    "temporaryAccessPass_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/temporaryAccessPassMethods/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "temporaryAccessPass",
+                            "createdDateTime",
+                            "startDateTime",
+                            "lifetimeInMinutes",
+                            "isUsableOnce",
+                            "isUsable",
+                            "methodUsabilityReason"
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "temporaryAccessPass": "boolean*",
+                    "createdDateTime": "boolean*",
+                    "startDateTime": "string*",
+                    "lifetimeInMinutes": "string*",
+                    "isUsableOnce": "string*",
+                    "isUsable": "string*",
+                    "methodUsabilityReason": "string*",
+                    "userId": "string*"
+                }
             }
         }
     },
