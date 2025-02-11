@@ -927,8 +927,8 @@
                 "key": "id",
                 "resources": {
                     "id": "string*",
-                    "temporaryAccessPass": "boolean*",
-                    "createdDateTime": "boolean*",
+                    "temporaryAccessPass": "string*",
+                    "createdDateTime": "string*",
                     "startDateTime": "string*",
                     "lifetimeInMinutes": "string*",
                     "isUsableOnce": "string*",
