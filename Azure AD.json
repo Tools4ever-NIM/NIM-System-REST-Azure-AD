@@ -1,6 +1,348 @@
 {
+    "$schema": "../rest-connector.json",
     "schema": {
         "crud_objects": {
+            "administrativeUnits": {
+                "operations": {
+                    "administrativeUnits_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/directory/administrativeUnits"
+                        }
+                    },
+                    "administrativeUnits_create": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/directory/administrativeUnits"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "displayName"
+                        ],
+                        "resource_prohibited": [
+                            "id",
+                            "deletedDateTime"
+                        ]
+                    },
+                    "administrativeUnits_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/directory/administrativeUnits/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "id"
+                        ]
+                    },
+                    "administrativeUnits_update": {
+                        "method": "patch",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/directory/administrativeUnits/{id}"
+                        },
+                        "semantics": "update",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id"
+                        ],
+                        "resource_prohibited": [
+                            "deletedDateTime"
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "deletedDateTime": "string*",
+                    "displayName": "string*",
+                    "description": "string*",
+                    "membershipRule": "string*",
+                    "membershipType": "string*",
+                    "membershipRuleProcessingState": "string*",
+                    "visibility": "string*"
+                }
+            },
+            "administrativeUnit_members": {
+                "operations": {
+                    "administrativeUnit_member_add": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/directory/administrativeUnits/{administrativeUnit_id}/members/{id}"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "administrativeUnit__id",
+                            "id"
+                        ],
+                        "body": {
+                            "@odata.id": "https://graph.microsoft.com/v1.0/directoryObjects/{id}"
+                        }
+                    },
+                    "administrativeUnit_members_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "administrativeUnits",
+                            "iterator": "id",
+                            "path": "/directory/administrativeUnits/{iterator}/members",
+                            "base": {
+                                "administrativeUnit_id": "{iterator}"
+                            }
+                        },
+                        "maxSessionCount": 20
+                    },
+                    "administrativeUnit_member_remove": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/directory/administrativeUnits/administrativeUnit_id}/members/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "administrativeUnit_id",
+                            "id"
+                        ]
+                    }
+                },
+                "groupmembership": {
+                    "add_operation": "administrativeUnit_member_add",
+                    "remove_operation": "administrativeUnit_member_remove",
+                    "member_table": "users",
+                    "group_table": "administrativeUnits",
+                    "member_attributes": {
+                        "id": "id"
+                    },
+                    "group_attributes": {
+                        "id": "administrativeUnit_id"
+                    }
+                },
+                "resources": {
+                    "administrativeUnit_id": "_nim*",
+                    "id": "string*"
+                }
+            },
+            "bitlocker_recoveryKeys": {
+                "operations": {
+                    "bitlocker_recoveryKeys_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/informationProtection/bitlocker/recoveryKeys"
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        }
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "createdDateTime": "string*",
+                    "volumeType": "string*",
+                    "deviceId": "string*"
+                }
+            },
+            "bitlocker_recoveryKeys_keys": {
+                "operations": {
+                    "bitlocker_recoveryKeys_key_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "bitlocker_recoveryKeys",
+                            "iterator": "id",
+                            "path": "/informationProtection/bitlocker/recoveryKeys/{iterator}"
+                        },
+                        "maxSessionCount": 20,
+                        "graphExcludedFields": ["id"]
+                    }
+                },
+                "resources": {
+                    "id": "string*",
+                    "key": "string*"
+                }
+            },
+            "devices": {
+                "operations": {
+                    "device_create": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/devices",
+                            "post_processing": "child_tables"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "displayName"
+                        ],
+                        "resource_prohibited": [
+                           
+                        ]
+                    },
+                    "device_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/devices/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "deviceId"
+                        ]
+                    },
+                    "devices_get": {
+                        "method": "get"
+                    },
+                    "device_update": {
+                        "method": "patch",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/devices/{id}",
+                            "post_processing": "child_tables"
+                        },
+                        "semantics": "update",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id"
+                        ],
+                        "resource_prohibited": [
+                            
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "accountEnabled": "boolean*",
+                    "deviceId": "string*",
+                    "deviceVersion": "number*",
+                    "displayName": "string*",
+                    "Manufacturer": "string*",
+                    "Model": "string*",
+                    "operatingSystemVersion": "string*",
+                    "extensionAttributes": {
+                        "extensionAttribute1": "string*",
+                        "extensionAttribute2": "string*",
+                        "extensionAttribute3": "string*",
+                        "extensionAttribute4": "string*",
+                        "extensionAttribute5": "string*",
+                        "extensionAttribute6": "string*",
+                        "extensionAttribute7": "string*",
+                        "extensionAttribute8": "string*",
+                        "extensionAttribute9": "string*",
+                        "extensionAttribute10": "string*",
+                        "extensionAttribute11": "string*",
+                        "extensionAttribute12": "string*",
+                        "extensionAttribute13": "string*",
+                        "extensionAttribute14": "string*",
+                        "extensionAttribute15": "string*"
+                    }
+                }
+            },
+            "devices_localCredentials": {
+                "operations": {
+                    "devices_localCredentials_get": {
+                        "method": "get",
+                        "call": {
+                            "path": "/directory/deviceLocalCredentials"
+                        }
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "deviceName": "string*",
+                    "lastBackupDateTime": "string*",
+                    "refreshDateTime": "string*"
+                }
+            },
+            "devices_localCredentials_credentials": {
+                "operations": {
+                    "devices_localCredentials_credentials_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "devices_localCredentials",
+                            "iterator": "id",
+                            "path": "/directory/deviceLocalCredentials/{iterator}",
+                            "query_parameters": {
+                                "$select": "credentials"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "value.credentials"
+                        },
+                        "maxSessionCount": 20,
+                        "graphExcludedFields": ["id"]
+                    }
+                },
+                "resources": {
+                    "id": "string*",
+                    "accountName": "string*",
+                    "accountSid": "string*",
+                    "backupDateTime": "string*",
+                    "passwordBase64": "string*"
+                }
+            },
+            "devices_registeredOwners": {
+                "operations": {
+                    "devices_registeredOwner_add": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/devices/{device_id}/registerOwnered/$ref"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "device_id",
+                            "id"
+                        ],
+                        "body": {
+                            "@odata.id": "https://graph.microsoft.com/v1.0/directoryObjects/{id}"
+                        }
+                    },
+                    "devices_registeredOwners_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "devices",
+                            "iterator": "id",
+                            "path": "/devices/{iterator}/registeredOwners",
+                            "base": {
+                                "device_id": "{iterator}"
+                            }
+                        },
+                        "maxSessionCount": 20
+                    },
+                    "devices_registeredOwner_remove": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/devices/{device_id}/members/{id}/$ref"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "device_id",
+                            "id"
+                        ]
+                    }
+                },
+                "resources": {
+                    "device_id": "_nim*",
+                    "id": "string*"
+                }
+            },
             "groups": {
                 "operations": {
                     "group_create": {
@@ -881,7 +1223,9 @@
                         "processing_options": {
                             "output_field": "value"
                         },
-                        "maxSessionCount": 20
+                        "maxSessionCount": 20,
+                        "graphExcludedFields": ["userId"]
+
 
                     },
                     "temporaryAccessPass_create": {
@@ -909,7 +1253,7 @@
                             "path": "/users/{userId}/authentication/temporaryAccessPassMethods/{id}"
                         },
                         "semantics": "delete",
-                        "resource_allowance_default": "prohibited",
+                        "resource_allowance_default": "optional",
                         "resource_mandatory": [
                             "userId"
                         ],
@@ -928,11 +1272,11 @@
                 "resources": {
                     "id": "string*",
                     "temporaryAccessPass": "string*",
-                    "createdDateTime": "string*",
-                    "startDateTime": "string*",
+                    "createdDateTime": "datetime*",
+                    "startDateTime": "datetime*",
                     "lifetimeInMinutes": "string*",
-                    "isUsableOnce": "string*",
-                    "isUsable": "string*",
+                    "isUsableOnce": "boolean*",
+                    "isUsable": "boolean*",
                     "methodUsabilityReason": "string*",
                     "userId": "string*"
                 }
