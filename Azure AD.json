@@ -255,7 +255,8 @@
                                 "group_id": "{iterator}"
                             }
                         },
-                        "maxSessionCount": 20
+                        "maxSessionCount": 20,
+						"warning_only": [404]
                     },
                     "member_remove": {
                         "method": "delete",
