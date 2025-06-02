@@ -3,16 +3,31 @@
 
 
 ## Data Tables
+- Administrative Units
+- Administrative Units Members
+- Bitlocker Recovery Keys
+- Devices
+- Devices Registered Ownerd
+- Devices Local Credentials
 - Groups
 - Licenses
 - Members
 - Owners
 - Teams
+- Temporary Access Pass Methods
 - Risky Users
 - Users
 
 
 ## Actions
+- Administrative Unit
+    - Create/Update Delete
+- Administrative Unit Member
+    - Add/Remove
+- Devices
+    - Create/Update/Delete
+- Devices Registered Owner
+    - Add/Remove 
 - Groups
     - Create/Update/Delete
 - Members
@@ -22,6 +37,8 @@
 - Teams
     - Create/Update/Delete
     - Archive/UnArchive
+- Temporary Access Pass Methods
+    - Create/Delete
 - Risky Users
    - Confirm/Dismiss
 - Users
