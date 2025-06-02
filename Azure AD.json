@@ -273,23 +273,27 @@
                             "table": "devices_localCredentials",
                             "iterator": "id",
                             "path": "/directory/deviceLocalCredentials/{iterator}",
-                            "query_parameters": {
-                                "$select": "credentials"
+                            "base": {
+                                "deviceId": "{iterator}"
                             }
                         },
                         "processing_options": {
-                            "output_field": "value.credentials"
                         },
                         "maxSessionCount": 20,
-                        "graphExcludedFields": ["id"]
+                        "selector":{
+                            "mode": "none"
+                        },
+                        "graphExcludedFields": ["id","accountName","accountSid","passwordBase64","deviceId","backupDateTime"]
                     }
                 },
                 "resources": {
-                    "id": "string*",
-                    "accountName": "string*",
-                    "accountSid": "string*",
-                    "backupDateTime": "string*",
-                    "passwordBase64": "string*"
+                    "deviceId": "_nim*",
+                    "credentials": [{
+                        "accountName": "string*",
+                        "accountSid": "string*",
+                        "passwordBase64": "string*",
+                        "backupDateTime": "string*"
+                    }]
                 }
             },
             "devices_registeredOwners": {
@@ -952,7 +956,12 @@
                         ]
                     },
                     "users_get": {
-                        "method": "get"
+                        "method": "get",
+                        "call": {
+                            "queryParameters": {
+                                "$expand": "manager"
+                            }
+                        }
                     },
                     "user_update": {
                         "method": "patch",
@@ -1073,6 +1082,10 @@
                             "state": "string*"
                         }
                     ],
+                    "manager": {
+                        "employeeId": "_:string*",
+                        "id": "_:string*"
+                    },
                     "mail": "string*",
                     "mailNickname": "string*",
                     "mobilePhone": "string*",
