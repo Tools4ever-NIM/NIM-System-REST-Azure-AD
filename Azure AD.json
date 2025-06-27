@@ -181,9 +181,6 @@
                         "resource_allowance_default": "optional",
                         "resource_mandatory": [
                             "displayName"
-                        ],
-                        "resource_prohibited": [
-                           
                         ]
                     },
                     "device_delete": {
@@ -212,9 +209,6 @@
                         "resource_allowance_default": "optional",
                         "resource_mandatory": [
                             "id"
-                        ],
-                        "resource_prohibited": [
-                            
                         ]
                     }
                 },
@@ -276,8 +270,6 @@
                             "base": {
                                 "deviceId": "{iterator}"
                             }
-                        },
-                        "processing_options": {
                         },
                         "maxSessionCount": 20,
                         "selector":{
@@ -563,12 +555,12 @@
                         "maxPageCount": -1
                     }
                 },
-                "key": "id",
+                "key": "skuId",
                 "resources": {
                     "appliesTo": "String*",
                     "capabilityStatus": "String*",
                     "consumedUnits": "Int32*",
-                    "id": "String (identifier)*",
+                    "id": "string*",
                     "prepaidUnits": {
                         "enabled": "_:Int32*",
                         "suspended": "_:Int32*",
@@ -664,15 +656,15 @@
                     }
                 },
                 "groupmembership": {
-                    "add_operation": "license_members_add",
-                    "remove_operation": "license_members_remove",
+                    "add_operation": "license_member_add",
+                    "remove_operation": "license_member_remove",
                     "member_table": "users",
                     "group_table": "licenses",
                     "member_attributes": {
                         "id": "id"
                     },
                     "group_attributes": {
-                        "id": "skuId"
+                        "skuId": "skuId"
                     }
                 },
                 "resources": {
@@ -1352,10 +1344,10 @@
     "config_scenarios": [
         {
             "name": "Default",
-            "description": "Default configuration",
+            "description": "9 tables: groups, groups_assignedLicenses, members, license...embers, users, users_assignedLicenses, users_assignedPlans",
             "version": "1.0",
-            "createTime": 1736275123746,
-            "modifyTime": 1736275123746,
+            "createTime": 1751040458584,
+            "modifyTime": 1751040458584,
             "name_values": [
                 {
                     "name": "certificate",
@@ -1374,19 +1366,13 @@
                     "value": [
                         "groups",
                         "groups_assignedLicenses",
-                        "groups_onPremisesProvisioningErrors",
                         "members",
                         "licenses",
                         "licenses_servicePlans",
                         "license_members",
-                        "owners",
                         "users",
                         "users_assignedLicenses",
-                        "users_assignedPlans",
-                        "users_identities",
-                        "users_licenseAssignmentStates",
-                        "users_onPremisesProvisioningErrors",
-                        "users_provisionedPlans"
+                        "users_assignedPlans"
                     ]
                 },
                 {
@@ -1411,7 +1397,7 @@
                 },
                 {
                     "name": "tenant_id",
-                    "value": "fc1afe25-dcf9-443c-8f10-35ec64d90196"
+                    "value": null
                 }
             ],
             "collections": [
@@ -1527,17 +1513,6 @@
                             "ref_col": [],
                             "reference": false,
                             "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "onPremisesProvisioningErrors",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
                         }
                     ],
                     "key": "id",
@@ -1559,52 +1534,12 @@
                         }
                     ],
                     "sys_nn": [],
+                    "container": "",
                     "source": "data"
                 },
                 {
                     "col_name": "groups_assignedLicenses",
-                    "fields": [
-                        {
-                            "field_name": "groups_id",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [
-                                "groups"
-                            ],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "disabledPlans",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "skuId",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": [
-                                {
-                                    "col": "licenses",
-                                    "field": "skuId"
-                                }
-                            ]
-                        }
-                    ],
+                    "fields": [],
                     "key": "",
                     "display": "",
                     "name_values": [
@@ -1616,33 +1551,8 @@
                             ]
                         }
                     ],
-                    "sys_nn": [
-                        {
-                            "field_a": "groups_id",
-                            "col_a": "groups",
-                            "field_b": "skuId",
-                            "col_b": "licenses"
-                        }
-                    ],
-                    "source": "data"
-                },
-                {
-                    "col_name": "groups_onPremisesProvisioningErrors",
-                    "fields": [],
-                    "key": "",
-                    "display": "",
-                    "name_values": [
-                        {
-                            "name": "properties",
-                            "value": [
-                                "category",
-                                "occurredDateTime",
-                                "propertyCausingError",
-                                "value"
-                            ]
-                        }
-                    ],
                     "sys_nn": [],
+                    "container": "",
                     "source": "data"
                 },
                 {
@@ -1693,14 +1603,9 @@
                             "col_a": "groups",
                             "field_b": "id",
                             "col_b": "users"
-                        },
-                        {
-                            "field_a": "group_id",
-                            "col_a": "groups",
-                            "field_b": "id",
-                            "col_b": "groups"
                         }
                     ],
+                    "container": "",
                     "source": "data"
                 },
                 {
@@ -1836,6 +1741,7 @@
                         }
                     ],
                     "sys_nn": [],
+                    "container": "",
                     "source": "data"
                 },
                 {
@@ -1848,9 +1754,7 @@
                             "field_format": "",
                             "field_source": "data",
                             "javascript": "",
-                            "ref_col": [
-                                "licenses"
-                            ],
+                            "ref_col": [],
                             "reference": false,
                             "ref_col_fields": []
                         },
@@ -1913,24 +1817,12 @@
                         }
                     ],
                     "sys_nn": [],
+                    "container": "",
                     "source": "data"
                 },
                 {
-                    "col_name": "owners",
+                    "col_name": "license_members",
                     "fields": [
-                        {
-                            "field_name": "group_id",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [
-                                "groups"
-                            ],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
                         {
                             "field_name": "id",
                             "field_type": "string",
@@ -1943,6 +1835,30 @@
                             ],
                             "reference": false,
                             "ref_col_fields": []
+                        },
+                        {
+                            "field_name": "skuId",
+                            "field_type": "string",
+                            "include": true,
+                            "field_format": "",
+                            "field_source": "data",
+                            "javascript": "",
+                            "ref_col": [
+                                "licenses"
+                            ],
+                            "reference": false,
+                            "ref_col_fields": []
+                        },
+                        {
+                            "field_name": "disabledPlans",
+                            "field_type": "string",
+                            "include": true,
+                            "field_format": "",
+                            "field_source": "data",
+                            "javascript": "",
+                            "ref_col": [],
+                            "reference": false,
+                            "ref_col_fields": []
                         }
                     ],
                     "key": "",
@@ -1951,19 +1867,21 @@
                         {
                             "name": "properties",
                             "value": [
-                                "group_id",
-                                "id"
+                                "id",
+                                "skuId",
+                                "disabledPlans"
                             ]
                         }
                     ],
                     "sys_nn": [
                         {
-                            "field_a": "group_id",
-                            "col_a": "groups",
-                            "field_b": "id",
-                            "col_b": "users"
+                            "field_a": "id",
+                            "col_a": "users",
+                            "field_b": "skuId",
+                            "col_b": "licenses"
                         }
                     ],
+                    "container": "",
                     "source": "data"
                 },
                 {
@@ -2144,54 +2062,10 @@
                             "ref_col": [],
                             "reference": false,
                             "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "identities",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "licenseAssignmentStates",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "onPremisesProvisioningErrors",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "provisionedPlans",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
                         }
                     ],
                     "key": "id",
-                    "display": "userPrincipalName",
+                    "display": "displayName",
                     "name_values": [
                         {
                             "name": "properties",
@@ -2214,6 +2088,7 @@
                         }
                     ],
                     "sys_nn": [],
+                    "container": "",
                     "source": "data"
                 },
                 {
@@ -2234,7 +2109,7 @@
                         },
                         {
                             "field_name": "disabledPlans",
-                            "field_type": "string-array",
+                            "field_type": "string",
                             "include": true,
                             "field_format": "",
                             "field_source": "data",
@@ -2270,12 +2145,13 @@
                     ],
                     "sys_nn": [
                         {
-                            "field_a": "users_id",
-                            "col_a": "users",
-                            "field_b": "skuId",
-                            "col_b": "licenses"
+                            "field_a": "skuId",
+                            "col_a": "licenses",
+                            "field_b": "users_id",
+                            "col_b": "users"
                         }
                     ],
+                    "container": "",
                     "source": "data"
                 },
                 {
@@ -2288,9 +2164,7 @@
                             "field_format": "",
                             "field_source": "data",
                             "javascript": "",
-                            "ref_col": [
-                                "users"
-                            ],
+                            "ref_col": [],
                             "reference": false,
                             "ref_col_fields": []
                         },
@@ -2323,9 +2197,7 @@
                             "field_format": "",
                             "field_source": "data",
                             "javascript": "",
-                            "ref_col": [
-                                "licenses_servicePlans"
-                            ],
+                            "ref_col": [],
                             "reference": false,
                             "ref_col_fields": []
                         }
@@ -2342,327 +2214,8 @@
                             ]
                         }
                     ],
-                    "sys_nn": [
-                        {
-                            "field_a": "users_id",
-                            "col_a": "users",
-                            "field_b": "servicePlanId",
-                            "col_b": "licenses_servicePlans"
-                        }
-                    ],
-                    "source": "data"
-                },
-                {
-                    "col_name": "users_identities",
-                    "fields": [
-                        {
-                            "field_name": "users_id",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [
-                                "users"
-                            ],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "issuer",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "issuerAssignedId",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "signInType",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        }
-                    ],
-                    "key": "",
-                    "display": "",
-                    "name_values": [
-                        {
-                            "name": "properties",
-                            "value": [
-                                "issuer",
-                                "issuerAssignedId",
-                                "signInType"
-                            ]
-                        }
-                    ],
                     "sys_nn": [],
-                    "source": "data"
-                },
-                {
-                    "col_name": "users_licenseAssignmentStates",
-                    "fields": [
-                        {
-                            "field_name": "users_id",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [
-                                "users"
-                            ],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "assignedByGroup",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "disabledPlans",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "error",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "skuId",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": [
-                                {
-                                    "col": "licenses",
-                                    "field": "skuId"
-                                }
-                            ]
-                        },
-                        {
-                            "field_name": "state",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        }
-                    ],
-                    "key": "",
-                    "display": "",
-                    "name_values": [
-                        {
-                            "name": "properties",
-                            "value": [
-                                "assignedByGroup",
-                                "disabledPlans",
-                                "error",
-                                "skuId",
-                                "state"
-                            ]
-                        }
-                    ],
-                    "sys_nn": [],
-                    "source": "data"
-                },
-                {
-                    "col_name": "users_onPremisesProvisioningErrors",
-                    "fields": [],
-                    "key": "",
-                    "display": "",
-                    "name_values": [
-                        {
-                            "name": "properties",
-                            "value": [
-                                "category",
-                                "occurredDateTime",
-                                "propertyCausingError",
-                                "value"
-                            ]
-                        }
-                    ],
-                    "sys_nn": [],
-                    "source": "data"
-                },
-                {
-                    "col_name": "users_provisionedPlans",
-                    "fields": [
-                        {
-                            "field_name": "users_id",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [
-                                "users"
-                            ],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "capabilityStatus",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "provisioningStatus",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "service",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        }
-                    ],
-                    "key": "",
-                    "display": "",
-                    "name_values": [
-                        {
-                            "name": "properties",
-                            "value": [
-                                "capabilityStatus",
-                                "provisioningStatus",
-                                "service"
-                            ]
-                        }
-                    ],
-                    "sys_nn": [],
-                    "source": "data"
-                },
-                {
-                    "col_name": "license_members",
-                    "fields": [
-                        {
-                            "field_name": "id",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [
-                                "groups",
-                                "users"
-                            ],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "skuId",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [
-                                "licenses"
-                            ],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "disabledPlans",
-                            "field_type": "string-array",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        }
-                    ],
-                    "key": "",
-                    "display": "",
-                    "name_values": [
-                        {
-                            "name": "properties",
-                            "value": [
-                                "id",
-                                "skuId",
-                                "disabledPlans"
-                            ]
-                        }
-                    ],
-                    "sys_nn": [
-                        {
-                            "field_a": "id",
-                            "col_a": "groups",
-                            "field_b": "skuId",
-                            "col_b": "licenses"
-                        },
-                        {
-                            "field_a": "id",
-                            "col_a": "users",
-                            "field_b": "skuId",
-                            "col_b": "licenses"
-                        }
-                    ],
+                    "container": "",
                     "source": "data"
                 }
             ]
