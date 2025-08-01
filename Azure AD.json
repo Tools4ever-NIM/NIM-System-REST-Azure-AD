@@ -1316,7 +1316,365 @@
                     "userPrincipalName": "string*"
                 }
             },
-            "temporaryAccessPassMethods": {
+            "auth_emailMethods": {
+                "operations": {
+                    "auth_emailMethods_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "users",
+                            "iterator": "id",
+                            "path": "/users/{iterator}/authentication/emailMethods",
+                            "base": {
+                                "userId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        },
+                        "maxSessionCount": 20,
+                        "graphExcludedFields": ["userId"],
+                        "warning_only": [404]
+                    },
+                    "auth_emailMethods_create": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/emailMethods"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "userId",
+                            "emailAddress"
+                        ],
+                        "resource_prohibited": [
+                            "id"
+                        ]
+                    },
+                    "auth_emailMethods_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/emailMethods/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id",
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "emailAddress"
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "userId": "string*",
+                    "emailAddress": "string*"
+                }
+            },
+            "auth_fido2Methods": {
+                "operations": {
+                    "auth_fido2Methods_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "users",
+                            "iterator": "id",
+                            "path": "/users/{iterator}/authentication/fido2Methods",
+                            "base": {
+                                "userId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        },
+                        "maxSessionCount": 20,
+                        "graphExcludedFields": ["userId"],
+                        "warning_only": [404]
+                    },
+                    "auth_fido2Methods_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/fido2Methods/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id",
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "displayName",
+                            "aaGuid",
+                            "model",
+                            "attestationCertificates",
+                            "attestationLevel"
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "userId": "string*",
+                    "displayName": "string*",
+                    "aaGuid": "string*",
+                    "model": "string*",
+                    "attestationCertificates": ["string*"],
+                    "attestationLevel": "string*"
+                }
+            },
+            "auth_microsoftAuthenticatorMethods": {
+                "operations": {
+                    "auth_microsoftAuthenticatorMethods_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "users",
+                            "iterator": "id",
+                            "path": "/users/{iterator}/authentication/microsoftAuthenticatorMethods",
+                            "base": {
+                                "userId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        },
+                        "maxSessionCount": 20,
+                        "graphExcludedFields": ["userId"],
+                        "warning_only": [404]
+                    },
+                    "auth_microsoftAuthenticatorMethods_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/microsoftAuthenticatorMethods/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id",
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "displayName",
+                            "creationDateTime",
+                            "deviceTag",
+                            "phoneAppVersion"
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "userId": "string*",
+                    "displayName": "string*",
+                    "deviceTag": "string*",
+                    "phoneAppVersion": "string*",
+                    "createdDateTime": "string*"
+                }
+            },
+            "auth_platformCredentialMethods": {
+                "operations": {
+                    "auth_platformCredentialMethods_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "users",
+                            "iterator": "id",
+                            "path": "/users/{iterator}/authentication/platformCredentialMethods",
+                            "base": {
+                                "userId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        },
+                        "maxSessionCount": 20,
+                        "graphExcludedFields": ["userId"],
+                        "warning_only": [404]
+                    },
+                    "auth_platformCredentialMethods_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/platformCredentialMethods/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id",
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "displayName",
+                            "creationDateTime",
+                            "keyStrength",
+                            "platform"
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "userId": "string*",
+                    "displayName": "string*",
+                    "keyStrength": "string*",
+                    "platform": "string*",
+                    "createdDateTime": "string*"
+                }
+            },
+            "auth_phoneMethods": {
+                "operations": {
+                    "auth_phoneMethods_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "users",
+                            "iterator": "id",
+                            "path": "/users/{iterator}/authentication/phoneMethods",
+                            "base": {
+                                "userId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        },
+                        "maxSessionCount": 20,
+                        "graphExcludedFields": ["userId"],
+                        "warning_only": [404]
+                    },
+                    "auth_phoneMethods_create": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/phoneMethods"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "userId",
+                            "phoneNumber",
+                            "phoneType"
+                        ],
+                        "resource_prohibited": [
+                            "id",
+                            "smsSignInState"
+                        ]
+                    },
+                    "auth_phoneMethods_enableSmsSignin": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/phoneMethods/{id}/enableSmsSignIn"
+                        },
+                        "body": {},
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id",
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "phoneNumber",
+                            "phoneType",
+                            "smsSignInState"
+                        ]
+                    },
+                    "auth_phoneMethods_disableSmsSignin": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/phoneMethods/{id}/enableSmsSignIn"
+                        },
+                        "body": {},
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id",
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "phoneNumber",
+                            "phoneType",
+                            "smsSignInState"
+                        ]
+                    },
+                    "auth_phoneMethods_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/phoneMethods/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id",
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "phoneNumber",
+                            "phoneType",
+                            "smsSignInState"
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "userId": "string*",
+                    "phoneNumber": "string*",
+                    "phoneType": "string*",
+                    "smsSignInState": "string*"
+                }
+            },
+            "auth_softwareOathMethods": {
+                "operations": {
+                    "auth_softwareOathMethods_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "users",
+                            "iterator": "id",
+                            "path": "/users/{iterator}/authentication/softwareOathMethods",
+                            "base": {
+                                "userId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        },
+                        "maxSessionCount": 20,
+                        "graphExcludedFields": ["userId"],
+                        "warning_only": [404]
+                    },
+                    "auth_softwareOathMethods_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/softwareOathMethods/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id",
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "secretKey"
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "userId": "string*",
+                    "secretKey": "string*"
+                }
+            },
+            "auth_temporaryAccessPassMethods": {
                 "operations": {
                     "temporaryAccessPass_get": {
                         "method": "get",
@@ -1333,9 +1691,8 @@
                             "output_field": "value"
                         },
                         "maxSessionCount": 20,
-                        "graphExcludedFields": ["userId"]
-
-
+                        "graphExcludedFields": ["userId"],
+                        "warning_only": [404]
                     },
                     "temporaryAccessPass_create": {
                         "method": "post",
@@ -1388,6 +1745,87 @@
                     "isUsable": "boolean*",
                     "methodUsabilityReason": "string*",
                     "userId": "string*"
+                }
+            },
+            "auth_WindowsHelloForBusinessMethods": {
+                "operations": {
+                    "auth_WindowsHelloForBusinessMethods_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "users",
+                            "iterator": "id",
+                            "path": "/users/{iterator}/authentication/WindowsHelloForBusinessMethods",
+                            "base": {
+                                "userId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        },
+                        "maxSessionCount": 20,
+                        "graphExcludedFields": ["userId"],
+                        "warning_only": [404]
+                    },
+                    "auth_WindowsHelloForBusinessMethods_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/WindowsHelloForBusinessMethods/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id",
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "displayName",
+                            "createdDateTime",
+                            "keyStrength"
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "userId": "string*",
+                    "displayName": "string*",
+                    "createdDateTime": "string*",
+                    "keyStrength": "string*"
+                }
+            },
+            "report_userRegistrationDetails": {
+                "operations": {
+                    "report_userRegistrationDetails_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/reports/authenticationMethods/userRegistrationDetails"
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        }
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "userPrincipalName": "string*",
+                    "userDisplayName": "string*",
+                    "isAdmin": "boolean*",
+                    "isSsprRegistered": "boolean*",
+                    "isSsprEnabled": "boolean*",
+                    "isSsprCapable": "boolean*",
+                    "isMfaRegistered": "boolean*",
+                    "isMfaCapable": "boolean*",
+                    "isPasswordlessCapable": "boolean*",
+                    "lastUpdatedDateTime": "string*",
+                    "methodsRegistered": ["string*"],
+                    "isSystemPreferredAuthenticationMethodEnabled": "boolean*",
+                    "systemPreferredAuthenticationMethods": ["string*"],
+                    "userPreferredMethodForSecondaryAuthentication": "string*",
+                    "userType": "string*"
                 }
             }
         }
