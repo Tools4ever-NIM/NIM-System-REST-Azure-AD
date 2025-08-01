@@ -1676,7 +1676,7 @@
             },
             "auth_temporaryAccessPassMethods": {
                 "operations": {
-                    "temporaryAccessPass_get": {
+                    "auth_temporaryAccessPass_get": {
                         "method": "get",
                         "call": {
                             "mode": "iteration",
@@ -1694,7 +1694,7 @@
                         "graphExcludedFields": ["userId"],
                         "warning_only": [404]
                     },
-                    "temporaryAccessPass_create": {
+                    "auth_temporaryAccessPass_create": {
                         "method": "post",
                         "call": {
                             "mode": "normal",
@@ -1712,7 +1712,7 @@
                             "methodUsabilityReason"
                         ]
                     },
-                    "temporaryAccessPass_delete": {
+                    "auth_temporaryAccessPass_delete": {
                         "method": "delete",
                         "call": {
                             "mode": "normal",
