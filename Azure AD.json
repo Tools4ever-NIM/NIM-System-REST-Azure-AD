@@ -990,7 +990,109 @@
                             "provisionedPlans",
                             "proxyAddresses",
                             "refreshTokensValidFromDateTime",
-                            "signInSessionsValidFromDateTime"
+                            "signInSessionsValidFromDateTime",
+                            "manager_id"
+                        ]
+                    },
+                    "user_update_manager": {
+                        "method": "put",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{id}/manager/$ref"
+                        },
+                        "body": {
+                            "_nim_merge_attributes_": false,
+                            "@odata.id": "https://graph.microsoft.com/v1.0/users/{manager.id}"
+                        },
+                        "semantics": "update",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id"
+                        ],
+                        "resource_prohibited": [
+                            "assignedLicenses",
+                            "assignedPlans",
+                            "createdDateTime",
+                            "creationType",
+                            "externalUserStateChangeDateTime",
+                            "identities",
+                            "imAddresses",
+                            "isResourceAccount",
+                            "lastPasswordChangeDateTime",
+                            "legalAgeGroupClassification",
+                            "licenseAssignmentStates",
+                            "onPremisesDistinguishedName",
+                            "onPremisesDomainName",
+                            "onPremisesLastSyncDateTime",
+                            "onPremisesProvisioningErrors",
+                            "onPremisesSamAccountName",
+                            "onPremisesSecurityIdentifier",
+                            "onPremisesSyncEnabled",
+                            "onPremisesUserPrincipalName",
+                            "provisionedPlans",
+                            "proxyAddresses",
+                            "refreshTokensValidFromDateTime",
+                            "signInSessionsValidFromDateTime",
+                            "accountEnabled",
+                            "ageGroup",
+                            "businessPhones",
+                            "city",
+                            "companyName",
+                            "consentProvidedForMinor",
+                            "costCenter",
+                            "country",
+                            "deletedDateTime",
+                            "department",
+                            "displayName",
+                            "division",
+                            "employeeHireDate",
+                            "employeeId",
+                            "employeeType",
+                            "extensionAttribute1",
+                            "extensionAttribute10",
+                            "extensionAttribute11",
+                            "extensionAttribute12",
+                            "extensionAttribute13",
+                            "extensionAttribute14",
+                            "extensionAttribute15",
+                            "extensionAttribute2",
+                            "extensionAttribute3",
+                            "extensionAttribute4",
+                            "extensionAttribute5",
+                            "extensionAttribute6",
+                            "extensionAttribute7",
+                            "extensionAttribute8",
+                            "extensionAttribute9",
+                            "externalUserState",
+                            "faxNumber",
+                            "forceChangePasswordNextSignIn",
+                            "forceChangePasswordNextSignInWithMfa",
+                            "givenName",
+                            "jobTitle",
+                            "mail",
+                            "mailNickname",
+                            "mobilePhone",
+                            "officeLocation",
+                            "onPremisesImmutableId",
+                            "otherMails",
+                            "password",
+                            "passwordPolicies",
+                            "postalCode",
+                            "preferredDataLocation",
+                            "preferredLanguage",
+                            "showInAddressList",
+                            "signInActivity_lastNonInteractiveSignInDateTime",
+                            "signInActivity_lastNonInteractiveSignInRequestId",
+                            "signInActivity_lastSignInDateTime",
+                            "signInActivity_lastSignInRequestId",
+                            "signInActivity_lastSuccessfulSignInDateTime",
+                            "signInActivity_lastSuccessfulSignInRequestId",
+                            "state",
+                            "streetAddress",
+                            "surname",
+                            "usageLocation",
+                            "userPrincipalName",
+                            "userType"
                         ]
                     },
 					"user_update_revokeSignInSessions": {
@@ -1175,7 +1277,6 @@
                         }
                     ],
                     "manager": {
-                        "employeeId": "_:string*",
                         "id": "_:string*"
                     },
                     "mail": "string*",
@@ -1840,7 +1941,66 @@
             "call_handling": "azure",
             "test_connection": {
                 "url": "/users"
+            },
+            "retry": [
+            {
+                "type": "connectionError",
+                "retry": {
+                    "type": "exponential",
+                    "maxCount": 1,
+                    "ceiling": 10, 
+                    "timeSlice": 5
+                }
+            }, 
+			{
+                "type": "statusCode",
+                "statusCode": 500,
+                "retry": {
+                    "type": "exponential",
+                    "maxCount": 1,
+                    "ceiling": 10, 
+                    "timeSlice": 5
+                }
+            }, 
+			{
+                "type": "statusCode",
+                "statusCode": 502,
+                "retry": {
+                    "type": "exponential",
+                    "maxCount": 1,
+                    "ceiling": 10, 
+                    "timeSlice": 5
+                }
+            },
+			{
+                "type": "statusCode",
+                "statusCode": 502,
+                "retry": {
+                    "type": "exponential",
+                    "maxCount": 1,
+                    "ceiling": 10, 
+                    "timeSlice": 5
+                }
+            },{
+                "type": "statusCode",
+                "statusCode": 503,
+                "retry": {
+                    "type": "exponential",
+                    "maxCount": 1,
+                    "ceiling": 10, 
+                    "timeSlice": 5
+                }
+            }, {
+                "type": "statusCode",
+                "statusCode": 429,
+                "retry": {
+                    "type": "exponential",
+                    "maxCount": 10,
+                    "ceiling": 10, 
+                    "timeSlice": 5
+                }
             }
+      ]
         },
         "authOptions": {
             "scopes": [
