@@ -955,7 +955,35 @@
                             }
                         }
                     },
-                    "user_update": {
+                    "user_update_assign_manager": {
+                        "method": "put",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{id}/manager/$ref"
+                        },
+						"body": {
+                            "_nim_merge_attributes_": false,
+                            "@odata.id": "https://graph.microsoft.com/v1.0/users/{manager.id}"
+                        },
+                        "semantics": "update",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "id",
+							"manager_id"
+                        ]
+                    },
+                    "user_update_remove_manager": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{id}/manager/$ref"
+                        },
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "id"
+                        ]
+                    },
+					"user_update": {
                         "method": "patch",
                         "call": {
                             "mode": "normal",
@@ -990,7 +1018,10 @@
                             "provisionedPlans",
                             "proxyAddresses",
                             "refreshTokensValidFromDateTime",
-                            "signInSessionsValidFromDateTime"
+                            "signInSessionsValidFromDateTime",
+                            "manager",
+                            "manager_id",
+                            "manager_employeeId"
                         ]
                     },
 					"user_update_revokeSignInSessions": {
