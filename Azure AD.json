@@ -181,9 +181,6 @@
                         "resource_allowance_default": "optional",
                         "resource_mandatory": [
                             "displayName"
-                        ],
-                        "resource_prohibited": [
-                           
                         ]
                     },
                     "device_delete": {
@@ -212,9 +209,6 @@
                         "resource_allowance_default": "optional",
                         "resource_mandatory": [
                             "id"
-                        ],
-                        "resource_prohibited": [
-                            
                         ]
                     }
                 },
@@ -276,8 +270,6 @@
                             "base": {
                                 "deviceId": "{iterator}"
                             }
-                        },
-                        "processing_options": {
                         },
                         "maxSessionCount": 20,
                         "selector":{
@@ -563,12 +555,12 @@
                         "maxPageCount": -1
                     }
                 },
-                "key": "id",
+                "key": "skuId",
                 "resources": {
                     "appliesTo": "String*",
                     "capabilityStatus": "String*",
                     "consumedUnits": "Int32*",
-                    "id": "String (identifier)*",
+                    "id": "string*",
                     "prepaidUnits": {
                         "enabled": "_:Int32*",
                         "suspended": "_:Int32*",
@@ -664,15 +656,15 @@
                     }
                 },
                 "groupmembership": {
-                    "add_operation": "license_members_add",
-                    "remove_operation": "license_members_remove",
+                    "add_operation": "license_member_add",
+                    "remove_operation": "license_member_remove",
                     "member_table": "users",
                     "group_table": "licenses",
                     "member_attributes": {
                         "id": "id"
                     },
                     "group_attributes": {
-                        "id": "skuId"
+                        "skuId": "skuId"
                     }
                 },
                 "resources": {
@@ -963,7 +955,35 @@
                             }
                         }
                     },
-                    "user_update": {
+                    "user_update_assign_manager": {
+                        "method": "put",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{id}/manager/$ref"
+                        },
+						"body": {
+                            "_nim_merge_attributes_": false,
+                            "@odata.id": "https://graph.microsoft.com/v1.0/users/{manager.id}"
+                        },
+                        "semantics": "update",
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "id",
+							"manager_id"
+                        ]
+                    },
+                    "user_update_remove_manager": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{id}/manager/$ref"
+                        },
+                        "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+                            "id"
+                        ]
+                    },
+					"user_update": {
                         "method": "patch",
                         "call": {
                             "mode": "normal",
@@ -1101,6 +1121,9 @@
                             "usageLocation",
                             "userPrincipalName",
                             "userType"
+                            "manager",
+                            "manager_id",
+                            "manager_employeeId"
                         ]
                     },
 					"user_update_revokeSignInSessions": {
@@ -1114,7 +1137,107 @@
 						"resource_mandatory": [
 						  "id"
 						]
-					}
+					},
+					"user_temporaryAccessPass_create": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{id}/authentication/temporaryAccessPassMethods"
+                        },
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id"
+                        ],
+                        "resource_prohibited": [
+                            "accountEnabled",
+                            "ageGroup",
+                            "assignedLicenses",
+                            "assignedPlans",
+                            "businessPhones",
+                            "city",
+                            "companyName",
+                            "consentProvidedForMinor",
+                            "costCenter",
+                            "country",
+                            "creationType",
+                            "deletedDateTime",
+                            "department",
+                            "displayName",
+                            "division",
+                            "employeeHireDate",
+                            "employeeId",
+                            "employeeType",
+                            "extensionAttribute1",
+                            "extensionAttribute10",
+                            "extensionAttribute11",
+                            "extensionAttribute12",
+                            "extensionAttribute13",
+                            "extensionAttribute14",
+                            "extensionAttribute15",
+                            "extensionAttribute2",
+                            "extensionAttribute3",
+                            "extensionAttribute4",
+                            "extensionAttribute5",
+                            "extensionAttribute6",
+                            "extensionAttribute7",
+                            "extensionAttribute8",
+                            "extensionAttribute9",
+                            "externalUserState",
+                            "externalUserStateChangeDateTime",
+                            "faxNumber",
+                            "forceChangePasswordNextSignIn",
+                            "forceChangePasswordNextSignInWithMfa",
+                            "givenName",
+                            "identities",
+                            "imAddresses",
+                            "isResourceAccount",
+                            "jobTitle",
+                            "lastPasswordChangeDateTime",
+                            "legalAgeGroupClassification",
+                            "licenseAssignmentStates",
+                            "mail",
+                            "mailNickname",
+                            "manager_id",
+                            "mobilePhone",
+                            "officeLocation",
+                            "onPremisesDistinguishedName",
+                            "onPremisesDomainName",
+                            "onPremisesImmutableId",
+                            "onPremisesLastSyncDateTime",
+                            "onPremisesProvisioningErrors",
+                            "onPremisesSamAccountName",
+                            "onPremisesSecurityIdentifier",
+                            "onPremisesSyncEnabled",
+                            "onPremisesUserPrincipalName",
+                            "otherMails",
+                            "password",
+                            "passwordPolicies",
+                            "postalCode",
+                            "preferredDataLocation",
+                            "preferredLanguage",
+                            "provisionedPlans",
+                            "proxyAddresses",
+                            "refreshTokensValidFromDateTime",
+                            "showInAddressList",
+                            "signInActivity_lastNonInteractiveSignInDateTime",
+                            "signInActivity_lastNonInteractiveSignInRequestId",
+                            "signInActivity_lastSignInDateTime",
+                            "signInActivity_lastSignInRequestId",
+                            "signInActivity_lastSuccessfulSignInDateTime",
+                            "signInActivity_lastSuccessfulSignInRequestId",
+                            "signInSessionsValidFromDateTime",
+                            "state",
+                            "streetAddress",
+                            "surname",
+                            "usageLocation",
+                            "userPrincipalName",
+                            "userType",
+                            "temporaryAccessPass",
+                            "createdDateTime",
+                            "isUsable",
+                            "methodUsabilityReason"
+                        ]
+                    }
                 },
                 "key": "id",
                 "resources": {
@@ -1262,7 +1385,11 @@
                     "surname": "string*",
                     "usageLocation": "string",
                     "userPrincipalName": "string*",
-                    "userType": "string"
+                    "userType": "string",
+					"temporaryAccessPass": "string",
+                    "startDateTime": "string",
+                    "lifetimeInMinutes": "string",
+                    "isUsableOnce": "string"
                 }
             },
 			"risky_users": {
@@ -1321,15 +1448,15 @@
                     "userPrincipalName": "string*"
                 }
             },
-            "temporaryAccessPassMethods": {
+            "auth_emailMethods": {
                 "operations": {
-                    "temporaryAccessPass_get": {
+                    "auth_emailMethods_get": {
                         "method": "get",
                         "call": {
                             "mode": "iteration",
                             "table": "users",
                             "iterator": "id",
-                            "path": "/users/{iterator}/authentication/temporaryAccessPassMethods",
+                            "path": "/users/{iterator}/authentication/emailMethods",
                             "base": {
                                 "userId": "{iterator}"
                             }
@@ -1338,70 +1465,48 @@
                             "output_field": "value"
                         },
                         "maxSessionCount": 20,
-                        "graphExcludedFields": ["userId"]
-
-
+                        "graphExcludedFields": ["userId"],
+                        "warning_only": [404]
                     },
-                    "temporaryAccessPass_create": {
+                    "auth_emailMethods_create": {
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/users/{userId}/authentication/temporaryAccessPassMethods"
+                            "path": "/users/{userId}/authentication/emailMethods"
                         },
                         "semantics": "create",
                         "resource_allowance_default": "optional",
                         "resource_mandatory": [
-                            "userId"
+                            "userId",
+                            "emailAddress"
                         ],
                         "resource_prohibited": [
-                            "temporaryAccessPass",
-                            "createdDateTime",
-                            "isUsable",
-                            "methodUsabilityReason"
+                            "id"
                         ]
                     },
-                    "temporaryAccessPass_delete": {
+                    "auth_emailMethods_delete": {
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/users/{userId}/authentication/temporaryAccessPassMethods/{id}"
+                            "path": "/users/{userId}/authentication/emailMethods/{id}"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "optional",
                         "resource_mandatory": [
+                            "id",
                             "userId"
                         ],
                         "resource_prohibited": [
-                            "temporaryAccessPass",
-                            "createdDateTime",
-                            "startDateTime",
-                            "lifetimeInMinutes",
-                            "isUsableOnce",
-                            "isUsable",
-                            "methodUsabilityReason"
+                            "emailAddress"
                         ]
                     }
                 },
                 "key": "id",
                 "resources": {
                     "id": "string*",
-                    "temporaryAccessPass": "string*",
-                    "createdDateTime": "datetime*",
-                    "startDateTime": "datetime*",
-                    "lifetimeInMinutes": "string*",
-                    "isUsableOnce": "boolean*",
-                    "isUsable": "boolean*",
-                    "methodUsabilityReason": "string*",
-                    "userId": "string*"
+                    "userId": "string*",
+                    "emailAddress": "string*"
                 }
-            }
-        }
-    },
-    "rest": {
-        "config": {
-            "baseUrl": "https://graph.microsoft.com/v1.0/",
-            "get": {
-                "maxPageCount": 999
             },
             "authentication": "certificate",
             "call_handling": "azure",
@@ -1484,6 +1589,488 @@
                 "client_assertion_type": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
                 "client_assertion": {
                     "name": "JWT"
+            "auth_fido2Methods": {
+                "operations": {
+                    "auth_fido2Methods_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "users",
+                            "iterator": "id",
+                            "path": "/users/{iterator}/authentication/fido2Methods",
+                            "base": {
+                                "userId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        },
+                        "maxSessionCount": 20,
+                        "graphExcludedFields": ["userId"],
+                        "warning_only": [404]
+                    },
+                    "auth_fido2Methods_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/fido2Methods/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id",
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "displayName",
+                            "aaGuid",
+                            "model",
+                            "attestationCertificates",
+                            "attestationLevel"
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "userId": "string*",
+                    "displayName": "string*",
+                    "aaGuid": "string*",
+                    "model": "string*",
+                    "attestationCertificates": ["string*"],
+                    "attestationLevel": "string*"
+                }
+            },
+            "auth_microsoftAuthenticatorMethods": {
+                "operations": {
+                    "auth_microsoftAuthenticatorMethods_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "users",
+                            "iterator": "id",
+                            "path": "/users/{iterator}/authentication/microsoftAuthenticatorMethods",
+                            "base": {
+                                "userId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        },
+                        "maxSessionCount": 20,
+                        "graphExcludedFields": ["userId"],
+                        "warning_only": [404]
+                    },
+                    "auth_microsoftAuthenticatorMethods_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/microsoftAuthenticatorMethods/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id",
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "displayName",
+                            "creationDateTime",
+                            "deviceTag",
+                            "phoneAppVersion"
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "userId": "string*",
+                    "displayName": "string*",
+                    "deviceTag": "string*",
+                    "phoneAppVersion": "string*",
+                    "createdDateTime": "string*"
+                }
+            },
+            "auth_platformCredentialMethods": {
+                "operations": {
+                    "auth_platformCredentialMethods_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "users",
+                            "iterator": "id",
+                            "path": "/users/{iterator}/authentication/platformCredentialMethods",
+                            "base": {
+                                "userId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        },
+                        "maxSessionCount": 20,
+                        "graphExcludedFields": ["userId"],
+                        "warning_only": [404]
+                    },
+                    "auth_platformCredentialMethods_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/platformCredentialMethods/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id",
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "displayName",
+                            "creationDateTime",
+                            "keyStrength",
+                            "platform"
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "userId": "string*",
+                    "displayName": "string*",
+                    "keyStrength": "string*",
+                    "platform": "string*",
+                    "createdDateTime": "string*"
+                }
+            },
+            "auth_phoneMethods": {
+                "operations": {
+                    "auth_phoneMethods_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "users",
+                            "iterator": "id",
+                            "path": "/users/{iterator}/authentication/phoneMethods",
+                            "base": {
+                                "userId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        },
+                        "maxSessionCount": 20,
+                        "graphExcludedFields": ["userId"],
+                        "warning_only": [404]
+                    },
+                    "auth_phoneMethods_create": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/phoneMethods"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "userId",
+                            "phoneNumber",
+                            "phoneType"
+                        ],
+                        "resource_prohibited": [
+                            "id",
+                            "smsSignInState"
+                        ]
+                    },
+                    "auth_phoneMethods_enableSmsSignin": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/phoneMethods/{id}/enableSmsSignIn"
+                        },
+                        "body": {},
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id",
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "phoneNumber",
+                            "phoneType",
+                            "smsSignInState"
+                        ]
+                    },
+                    "auth_phoneMethods_disableSmsSignin": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/phoneMethods/{id}/enableSmsSignIn"
+                        },
+                        "body": {},
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id",
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "phoneNumber",
+                            "phoneType",
+                            "smsSignInState"
+                        ]
+                    },
+                    "auth_phoneMethods_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/phoneMethods/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id",
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "phoneNumber",
+                            "phoneType",
+                            "smsSignInState"
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "userId": "string*",
+                    "phoneNumber": "string*",
+                    "phoneType": "string*",
+                    "smsSignInState": "string*"
+                }
+            },
+            "auth_softwareOathMethods": {
+                "operations": {
+                    "auth_softwareOathMethods_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "users",
+                            "iterator": "id",
+                            "path": "/users/{iterator}/authentication/softwareOathMethods",
+                            "base": {
+                                "userId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        },
+                        "maxSessionCount": 20,
+                        "graphExcludedFields": ["userId"],
+                        "warning_only": [404]
+                    },
+                    "auth_softwareOathMethods_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/softwareOathMethods/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id",
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "secretKey"
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "userId": "string*",
+                    "secretKey": "string*"
+                }
+            },
+            "auth_temporaryAccessPassMethods": {
+                "operations": {
+                    "auth_temporaryAccessPass_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "users",
+                            "iterator": "id",
+                            "path": "/users/{iterator}/authentication/temporaryAccessPassMethods",
+                            "base": {
+                                "userId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        },
+                        "maxSessionCount": 20,
+                        "graphExcludedFields": ["userId"],
+                        "warning_only": [404]
+                    },
+                    "auth_temporaryAccessPass_create": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/temporaryAccessPassMethods"
+                        },
+                        "semantics": "create",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "temporaryAccessPass",
+                            "createdDateTime",
+                            "isUsable",
+                            "methodUsabilityReason"
+                        ]
+                    },
+                    "auth_temporaryAccessPass_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/temporaryAccessPassMethods/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "temporaryAccessPass",
+                            "createdDateTime",
+                            "startDateTime",
+                            "lifetimeInMinutes",
+                            "isUsableOnce",
+                            "isUsable",
+                            "methodUsabilityReason"
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "temporaryAccessPass": "string*",
+                    "createdDateTime": "datetime*",
+                    "startDateTime": "datetime*",
+                    "lifetimeInMinutes": "string*",
+                    "isUsableOnce": "boolean*",
+                    "isUsable": "boolean*",
+                    "methodUsabilityReason": "string*",
+                    "userId": "string*"
+                }
+            },
+            "auth_WindowsHelloForBusinessMethods": {
+                "operations": {
+                    "auth_WindowsHelloForBusinessMethods_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "users",
+                            "iterator": "id",
+                            "path": "/users/{iterator}/authentication/WindowsHelloForBusinessMethods",
+                            "base": {
+                                "userId": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        },
+                        "maxSessionCount": 20,
+                        "graphExcludedFields": ["userId"],
+                        "warning_only": [404]
+                    },
+                    "auth_WindowsHelloForBusinessMethods_delete": {
+                        "method": "delete",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/users/{userId}/authentication/WindowsHelloForBusinessMethods/{id}"
+                        },
+                        "semantics": "delete",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "id",
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "displayName",
+                            "createdDateTime",
+                            "keyStrength"
+                        ]
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "userId": "string*",
+                    "displayName": "string*",
+                    "createdDateTime": "string*",
+                    "keyStrength": "string*"
+                }
+            },
+            "report_userRegistrationDetails": {
+                "operations": {
+                    "report_userRegistrationDetails_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "normal",
+                            "path": "/reports/authenticationMethods/userRegistrationDetails"
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        }
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "id": "string*",
+                    "userPrincipalName": "string*",
+                    "userDisplayName": "string*",
+                    "isAdmin": "boolean*",
+                    "isSsprRegistered": "boolean*",
+                    "isSsprEnabled": "boolean*",
+                    "isSsprCapable": "boolean*",
+                    "isMfaRegistered": "boolean*",
+                    "isMfaCapable": "boolean*",
+                    "isPasswordlessCapable": "boolean*",
+                    "lastUpdatedDateTime": "string*",
+                    "methodsRegistered": ["string*"],
+                    "isSystemPreferredAuthenticationMethodEnabled": "boolean*",
+                    "systemPreferredAuthenticationMethods": ["string*"],
+                    "userPreferredMethodForSecondaryAuthentication": "string*",
+                    "userType": "string*"
+                }
+            }
+        }
+    },
+    "rest": {
+        "config": {
+            "baseUrl": "https://graph.microsoft.com/v1.0/",
+            "get": {
+                "maxPageCount": 999
+            },
+            "authentication": "certificate",
+            "call_handling": "azure",
+            "test_connection": {
+                "url": "/users"
+            }
+        },
+        "authOptions": {
+            "scopes": [
+                "https://graph.microsoft.com/.default"
+            ],
+            "authUrl": "https://login.microsoftonline.com/{tenantId}/oauth2/v2.0/token",
+            "type": "signed-jwt",
+            "postData": {
+                "client_id": {
+                    "name": "clientId"
+                },
+                "scope": {
+                    "name": "scope"
+                },
+                "client_assertion_type": "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
+                "client_assertion": {
+                    "name": "JWT"
                 },
                 "grant_type": "client_credentials"
             },
@@ -1512,10 +2099,10 @@
     "config_scenarios": [
         {
             "name": "Default",
-            "description": "Default configuration",
+            "description": "9 tables: groups, groups_assignedLicenses, members, license...embers, users, users_assignedLicenses, users_assignedPlans",
             "version": "1.0",
-            "createTime": 1736275123746,
-            "modifyTime": 1736275123746,
+            "createTime": 1751040458584,
+            "modifyTime": 1751040458584,
             "name_values": [
                 {
                     "name": "certificate",
@@ -1534,19 +2121,13 @@
                     "value": [
                         "groups",
                         "groups_assignedLicenses",
-                        "groups_onPremisesProvisioningErrors",
                         "members",
                         "licenses",
                         "licenses_servicePlans",
                         "license_members",
-                        "owners",
                         "users",
                         "users_assignedLicenses",
-                        "users_assignedPlans",
-                        "users_identities",
-                        "users_licenseAssignmentStates",
-                        "users_onPremisesProvisioningErrors",
-                        "users_provisionedPlans"
+                        "users_assignedPlans"
                     ]
                 },
                 {
@@ -1571,7 +2152,7 @@
                 },
                 {
                     "name": "tenant_id",
-                    "value": "fc1afe25-dcf9-443c-8f10-35ec64d90196"
+                    "value": null
                 }
             ],
             "collections": [
@@ -1687,17 +2268,6 @@
                             "ref_col": [],
                             "reference": false,
                             "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "onPremisesProvisioningErrors",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
                         }
                     ],
                     "key": "id",
@@ -1719,52 +2289,12 @@
                         }
                     ],
                     "sys_nn": [],
+                    "container": "",
                     "source": "data"
                 },
                 {
                     "col_name": "groups_assignedLicenses",
-                    "fields": [
-                        {
-                            "field_name": "groups_id",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [
-                                "groups"
-                            ],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "disabledPlans",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "skuId",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": [
-                                {
-                                    "col": "licenses",
-                                    "field": "skuId"
-                                }
-                            ]
-                        }
-                    ],
+                    "fields": [],
                     "key": "",
                     "display": "",
                     "name_values": [
@@ -1776,33 +2306,8 @@
                             ]
                         }
                     ],
-                    "sys_nn": [
-                        {
-                            "field_a": "groups_id",
-                            "col_a": "groups",
-                            "field_b": "skuId",
-                            "col_b": "licenses"
-                        }
-                    ],
-                    "source": "data"
-                },
-                {
-                    "col_name": "groups_onPremisesProvisioningErrors",
-                    "fields": [],
-                    "key": "",
-                    "display": "",
-                    "name_values": [
-                        {
-                            "name": "properties",
-                            "value": [
-                                "category",
-                                "occurredDateTime",
-                                "propertyCausingError",
-                                "value"
-                            ]
-                        }
-                    ],
                     "sys_nn": [],
+                    "container": "",
                     "source": "data"
                 },
                 {
@@ -1853,14 +2358,9 @@
                             "col_a": "groups",
                             "field_b": "id",
                             "col_b": "users"
-                        },
-                        {
-                            "field_a": "group_id",
-                            "col_a": "groups",
-                            "field_b": "id",
-                            "col_b": "groups"
                         }
                     ],
+                    "container": "",
                     "source": "data"
                 },
                 {
@@ -1996,6 +2496,7 @@
                         }
                     ],
                     "sys_nn": [],
+                    "container": "",
                     "source": "data"
                 },
                 {
@@ -2008,9 +2509,7 @@
                             "field_format": "",
                             "field_source": "data",
                             "javascript": "",
-                            "ref_col": [
-                                "licenses"
-                            ],
+                            "ref_col": [],
                             "reference": false,
                             "ref_col_fields": []
                         },
@@ -2073,24 +2572,12 @@
                         }
                     ],
                     "sys_nn": [],
+                    "container": "",
                     "source": "data"
                 },
                 {
-                    "col_name": "owners",
+                    "col_name": "license_members",
                     "fields": [
-                        {
-                            "field_name": "group_id",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [
-                                "groups"
-                            ],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
                         {
                             "field_name": "id",
                             "field_type": "string",
@@ -2103,6 +2590,30 @@
                             ],
                             "reference": false,
                             "ref_col_fields": []
+                        },
+                        {
+                            "field_name": "skuId",
+                            "field_type": "string",
+                            "include": true,
+                            "field_format": "",
+                            "field_source": "data",
+                            "javascript": "",
+                            "ref_col": [
+                                "licenses"
+                            ],
+                            "reference": false,
+                            "ref_col_fields": []
+                        },
+                        {
+                            "field_name": "disabledPlans",
+                            "field_type": "string",
+                            "include": true,
+                            "field_format": "",
+                            "field_source": "data",
+                            "javascript": "",
+                            "ref_col": [],
+                            "reference": false,
+                            "ref_col_fields": []
                         }
                     ],
                     "key": "",
@@ -2111,19 +2622,21 @@
                         {
                             "name": "properties",
                             "value": [
-                                "group_id",
-                                "id"
+                                "id",
+                                "skuId",
+                                "disabledPlans"
                             ]
                         }
                     ],
                     "sys_nn": [
                         {
-                            "field_a": "group_id",
-                            "col_a": "groups",
-                            "field_b": "id",
-                            "col_b": "users"
+                            "field_a": "id",
+                            "col_a": "users",
+                            "field_b": "skuId",
+                            "col_b": "licenses"
                         }
                     ],
+                    "container": "",
                     "source": "data"
                 },
                 {
@@ -2304,54 +2817,10 @@
                             "ref_col": [],
                             "reference": false,
                             "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "identities",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "licenseAssignmentStates",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "onPremisesProvisioningErrors",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "provisionedPlans",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
                         }
                     ],
                     "key": "id",
-                    "display": "userPrincipalName",
+                    "display": "displayName",
                     "name_values": [
                         {
                             "name": "properties",
@@ -2374,6 +2843,7 @@
                         }
                     ],
                     "sys_nn": [],
+                    "container": "",
                     "source": "data"
                 },
                 {
@@ -2394,7 +2864,7 @@
                         },
                         {
                             "field_name": "disabledPlans",
-                            "field_type": "string-array",
+                            "field_type": "string",
                             "include": true,
                             "field_format": "",
                             "field_source": "data",
@@ -2430,12 +2900,13 @@
                     ],
                     "sys_nn": [
                         {
-                            "field_a": "users_id",
-                            "col_a": "users",
-                            "field_b": "skuId",
-                            "col_b": "licenses"
+                            "field_a": "skuId",
+                            "col_a": "licenses",
+                            "field_b": "users_id",
+                            "col_b": "users"
                         }
                     ],
+                    "container": "",
                     "source": "data"
                 },
                 {
@@ -2448,9 +2919,7 @@
                             "field_format": "",
                             "field_source": "data",
                             "javascript": "",
-                            "ref_col": [
-                                "users"
-                            ],
+                            "ref_col": [],
                             "reference": false,
                             "ref_col_fields": []
                         },
@@ -2483,9 +2952,7 @@
                             "field_format": "",
                             "field_source": "data",
                             "javascript": "",
-                            "ref_col": [
-                                "licenses_servicePlans"
-                            ],
+                            "ref_col": [],
                             "reference": false,
                             "ref_col_fields": []
                         }
@@ -2502,327 +2969,8 @@
                             ]
                         }
                     ],
-                    "sys_nn": [
-                        {
-                            "field_a": "users_id",
-                            "col_a": "users",
-                            "field_b": "servicePlanId",
-                            "col_b": "licenses_servicePlans"
-                        }
-                    ],
-                    "source": "data"
-                },
-                {
-                    "col_name": "users_identities",
-                    "fields": [
-                        {
-                            "field_name": "users_id",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [
-                                "users"
-                            ],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "issuer",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "issuerAssignedId",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "signInType",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        }
-                    ],
-                    "key": "",
-                    "display": "",
-                    "name_values": [
-                        {
-                            "name": "properties",
-                            "value": [
-                                "issuer",
-                                "issuerAssignedId",
-                                "signInType"
-                            ]
-                        }
-                    ],
                     "sys_nn": [],
-                    "source": "data"
-                },
-                {
-                    "col_name": "users_licenseAssignmentStates",
-                    "fields": [
-                        {
-                            "field_name": "users_id",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [
-                                "users"
-                            ],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "assignedByGroup",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "disabledPlans",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "error",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "skuId",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": [
-                                {
-                                    "col": "licenses",
-                                    "field": "skuId"
-                                }
-                            ]
-                        },
-                        {
-                            "field_name": "state",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        }
-                    ],
-                    "key": "",
-                    "display": "",
-                    "name_values": [
-                        {
-                            "name": "properties",
-                            "value": [
-                                "assignedByGroup",
-                                "disabledPlans",
-                                "error",
-                                "skuId",
-                                "state"
-                            ]
-                        }
-                    ],
-                    "sys_nn": [],
-                    "source": "data"
-                },
-                {
-                    "col_name": "users_onPremisesProvisioningErrors",
-                    "fields": [],
-                    "key": "",
-                    "display": "",
-                    "name_values": [
-                        {
-                            "name": "properties",
-                            "value": [
-                                "category",
-                                "occurredDateTime",
-                                "propertyCausingError",
-                                "value"
-                            ]
-                        }
-                    ],
-                    "sys_nn": [],
-                    "source": "data"
-                },
-                {
-                    "col_name": "users_provisionedPlans",
-                    "fields": [
-                        {
-                            "field_name": "users_id",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [
-                                "users"
-                            ],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "capabilityStatus",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "provisioningStatus",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "service",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        }
-                    ],
-                    "key": "",
-                    "display": "",
-                    "name_values": [
-                        {
-                            "name": "properties",
-                            "value": [
-                                "capabilityStatus",
-                                "provisioningStatus",
-                                "service"
-                            ]
-                        }
-                    ],
-                    "sys_nn": [],
-                    "source": "data"
-                },
-                {
-                    "col_name": "license_members",
-                    "fields": [
-                        {
-                            "field_name": "id",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [
-                                "groups",
-                                "users"
-                            ],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "skuId",
-                            "field_type": "string",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [
-                                "licenses"
-                            ],
-                            "reference": false,
-                            "ref_col_fields": []
-                        },
-                        {
-                            "field_name": "disabledPlans",
-                            "field_type": "string-array",
-                            "include": true,
-                            "field_format": "",
-                            "field_source": "data",
-                            "javascript": "",
-                            "ref_col": [],
-                            "reference": false,
-                            "ref_col_fields": []
-                        }
-                    ],
-                    "key": "",
-                    "display": "",
-                    "name_values": [
-                        {
-                            "name": "properties",
-                            "value": [
-                                "id",
-                                "skuId",
-                                "disabledPlans"
-                            ]
-                        }
-                    ],
-                    "sys_nn": [
-                        {
-                            "field_a": "id",
-                            "col_a": "groups",
-                            "field_b": "skuId",
-                            "col_b": "licenses"
-                        },
-                        {
-                            "field_a": "id",
-                            "col_a": "users",
-                            "field_b": "skuId",
-                            "col_b": "licenses"
-                        }
-                    ],
+                    "container": "",
                     "source": "data"
                 }
             ]
