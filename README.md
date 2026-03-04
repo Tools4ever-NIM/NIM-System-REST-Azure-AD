@@ -5,25 +5,52 @@
 ## Data Tables
 - Administrative Units
 - Administrative Units Members
+- Auth Methods - Email
+- Auth Methods - External
+- Auth Methods - FIDO2
+- Auth Methods - Microsoft Authenticator
+- Auth Methods - Platform Credential
+- Auth Methods - Phone
+- Auth Methods - Software OATH
+- Auth Methods - Temporary Access Pass
+- Auth Methods - Windows Hello For Business
 - Bitlocker Recovery Keys
 - Devices
-- Devices Registered Ownerd
+- Devices Registered Owners
 - Devices Local Credentials
 - Groups
 - Licenses
 - Members
 - Owners
 - Teams
-- Temporary Access Pass Methods
 - Risky Users
+- Report User Registration Details
 - Users
 
 
 ## Actions
 - Administrative Unit
-    - Create/Update Delete
+    - Create/Update/Delete
 - Administrative Unit Member
     - Add/Remove
+- Auth Methods - Email
+    - Create/Delete
+- Auth Methods - External
+    - Create/Delete
+- Auth Methods - FIDO2
+    - Delete
+- Auth Methods - Microsoft Authenticator
+    - Delete
+- Auth Methods - Platform Credential
+    - Delete
+- Auth Methods - Phone
+    - Create/Enable SMS/Disable SMS/Delete
+- Auth Methods - Software OATH
+    - Delete
+- Auth Methods - Temporary Access Pass
+    - Create/Delete
+- Auth Methods - Windows Hello For Business
+    - Delete
 - Devices
     - Create/Update/Delete
 - Devices Registered Owner
@@ -37,8 +64,6 @@
 - Teams
     - Create/Update/Delete
     - Archive/UnArchive
-- Temporary Access Pass Methods
-    - Create/Delete
 - Risky Users
    - Confirm/Dismiss
 - Users
