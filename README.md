@@ -5,6 +5,7 @@
 ## Data Tables
 - Administrative Units
 - Administrative Units Members
+- Audit Logs Sign Ins
 - Auth Methods - Email
 - Auth Methods - External
 - Auth Methods - FIDO2
@@ -24,6 +25,7 @@
 - Owners
 - Teams
 - Risky Users
+- Report Office365 Active User Detail
 - Report User Registration Details
 - Users
 
