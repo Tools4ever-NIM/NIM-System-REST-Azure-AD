@@ -133,7 +133,7 @@
                     "auditLogs_signIns_get": {
                         "method": "get",
                         "call": {
-                            "path": "/v1.0auditLogs/signIns"
+                            "path": "/v1.0/auditLogs/signIns"
                         },
                         "processing_options": {
                             "output_field": "value"
@@ -2042,7 +2042,82 @@
                         "method": "get",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/beta/reports/getOffice365ActiveUserDetail(period='D30')?$format=application/json "
+                            
+                            "path": "/beta/reports/getOffice365ActiveUserDetail(period='D30')",
+                            "queryParameters": {
+                                "$format": "application/json"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "value"
+                        },
+                        "selector": {
+                            "mode": "none"
+                        },
+                        "graphExcludedFields": [
+                            "reportRefreshDate",
+                            "userPrincipalName",
+                            "displayName",
+                            "isDeleted",
+                            "deletedDate",
+                            "hasExchangeLicense",
+                            "hasOneDriveLicense",
+                            "hasSharePointLicense",
+                            "hasSkypeForBusinessLicense",
+                            "hasYammerLicense",
+                            "hasTeamsLicense",
+                            "exchangeLastActivityDate",
+                            "oneDriveLastActivityDate",
+                            "sharePointLastActivityDate",
+                            "skypeForBusinessLastActivityDate",
+                            "yammerLastActivityDate",
+                            "teamsLastActivityDate",
+                            "exchangeLicenseAssignDate",
+                            "oneDriveLicenseAssignDate",
+                            "sharePointLicenseAssignDate",
+                            "skypeForBusinessLicenseAssignDate",
+                            "yammerLicenseAssignDate",
+                            "teamsLicenseAssignDate",
+                            "assignedProducts"
+                        ] 
+                    }
+                },
+                "key": "userPrincipalName",
+                "resources": {
+                    "reportRefreshDate": "string*",
+                    "userPrincipalName": "string*",
+                    "displayName": "string*",
+                    "isDeleted": "boolean*",
+                    "deletedDate": "string*",
+                    "hasExchangeLicense": "boolean*",
+                    "hasOneDriveLicense": "boolean*",
+                    "hasSharePointLicense": "boolean*",
+                    "hasSkypeForBusinessLicense": "boolean*",
+                    "hasYammerLicense": "boolean*",
+                    "hasTeamsLicense": "boolean*",
+                    "exchangeLastActivityDate": "string*",
+                    "oneDriveLastActivityDate": "string*",
+                    "sharePointLastActivityDate": "string*",
+                    "skypeForBusinessLastActivityDate": "string*",
+                    "yammerLastActivityDate": "string*",
+                    "teamsLastActivityDate": "string*",
+                    "exchangeLicenseAssignDate": "string*",
+                    "oneDriveLicenseAssignDate": "string*",
+                    "sharePointLicenseAssignDate": "string*",
+                    "skypeForBusinessLicenseAssignDate": "string*",
+                    "yammerLicenseAssignDate": "string*",
+                    "teamsLicenseAssignDate": "string*",
+                    "assignedProducts": "string*"
+                }
+            },
+            "report_userRegistrationDetails": {
+                "operations": {
+                    "report_userRegistrationDetails_get": {
+                        "method": "get",
+
+                        "call": {
+                            "mode": "normal",
+                            "path": "/v1.0/reports/authenticationMethods/userRegistrationDetails"
                         },
                         "processing_options": {
                             "output_field": "value"
@@ -2071,47 +2146,6 @@
                     ],
                     "userPreferredMethodForSecondaryAuthentication": "string*",
                     "userType": "string*"
-                }
-            },
-            "report_userRegistrationDetails": {
-                "operations": {
-                    "report_userRegistrationDetails_get": {
-                        "method": "get",
-                        "call": {
-                            "mode": "normal",
-                            "path": "/v1.0/reports/authenticationMethods/userRegistrationDetails"
-                        },
-                        "processing_options": {
-                            "output_field": "value"
-                        }
-                    }
-                },
-                "key": "id",
-                "resources": {
-                    "reportRefreshDate": "string*",
-                    "userPrincipalName": "string*",
-                    "displayName": "string*",
-                    "isDeleted": "boolean*",
-                    "deletedDate": "string*",
-                    "hasExchangeLicense": "boolean*",
-                    "hasOneDriveLicense": "boolean*",
-                    "hasSharePointLicense": "boolean*",
-                    "hasSkypeForBusinessLicense": "boolean*",
-                    "hasYammerLicense": "boolean*",
-                    "hasTeamsLicense": "boolean*",
-                    "exchangeLastActivityDate": "string*",
-                    "oneDriveLastActivityDate": "string*",
-                    "sharePointLastActivityDate": "string*",
-                    "skypeForBusinessLastActivityDate": "string*",
-                    "yammerLastActivityDate": "string*",
-                    "teamsLastActivityDate": "string*",
-                    "exchangeLicenseAssignDate": "string*",
-                    "oneDriveLicenseAssignDate": "string*",
-                    "sharePointLicenseAssignDate": "string*",
-                    "skypeForBusinessLicenseAssignDate": "string*",
-                    "yammerLicenseAssignDate": "string*",
-                    "teamsLicenseAssignDate": "string*",
-                    "assignedProducts": "string*"
                 }
             }
         }
