@@ -59,6 +59,8 @@
     - Add/Remove 
 - Groups
     - Create/Update/Delete
+- Mailbox Settings Automatic Reply Configuration
+    - Update
 - Members
     - Add/Remove
 - Owners
