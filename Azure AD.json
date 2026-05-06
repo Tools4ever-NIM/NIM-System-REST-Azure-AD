@@ -7,14 +7,14 @@
                         "method": "get",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/directory/administrativeUnits"
+                            "path": "v1.0/directory/administrativeUnits"
                         }
                     },
                     "administrativeUnits_create": {
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/directory/administrativeUnits"
+                            "path": "v1.0/directory/administrativeUnits"
                         },
                         "semantics": "create",
                         "resource_allowance_default": "optional",
@@ -30,7 +30,7 @@
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/directory/administrativeUnits/{id}"
+                            "path": "v1.0/directory/administrativeUnits/{id}"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "prohibited",
@@ -42,7 +42,7 @@
                         "method": "patch",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/directory/administrativeUnits/{id}"
+                            "path": "v1.0/directory/administrativeUnits/{id}"
                         },
                         "semantics": "update",
                         "resource_allowance_default": "optional",
@@ -72,7 +72,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/directory/administrativeUnits/{administrativeUnit_id}/members/{id}"
+                            "path": "v1.0/directory/administrativeUnits/{administrativeUnit_id}/members/{id}"
                         },
                         "semantics": "create",
                         "resource_allowance_default": "prohibited",
@@ -90,7 +90,7 @@
                             "mode": "iteration",
                             "table": "administrativeUnits",
                             "iterator": "id",
-                            "path": "/v1.0/directory/administrativeUnits/{iterator}/members",
+                            "path": "v1.0/directory/administrativeUnits/{iterator}/members",
                             "base": {
                                 "administrativeUnit_id": "{iterator}"
                             }
@@ -101,7 +101,7 @@
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/directory/administrativeUnits/administrativeUnit_id}/members/{id}"
+                            "path": "v1.0/directory/administrativeUnits/administrativeUnit_id}/members/{id}"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "prohibited",
@@ -133,7 +133,7 @@
                     "auditLogs_signIns_get": {
                         "method": "get",
                         "call": {
-                            "path": "/v1.0/auditLogs/signIns"
+                            "path": "v1.0/auditLogs/signIns"
                         },
                         "processing_options": {
                             "output_field": "value"
@@ -211,7 +211,7 @@
                             "mode": "iteration",
                             "table": "users",
                             "iterator": "id",
-                            "path": "/v1.0/users/{iterator}/authentication/emailMethods",
+                            "path": "v1.0/users/{iterator}/authentication/emailMethods",
                             "base": {
                                 "userId": "{iterator}"
                             }
@@ -231,7 +231,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{userId}/authentication/emailMethods"
+                            "path": "v1.0/users/{userId}/authentication/emailMethods"
                         },
                         "semantics": "create",
                         "resource_allowance_default": "optional",
@@ -247,7 +247,7 @@
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{userId}/authentication/emailMethods/{id}"
+                            "path": "v1.0/users/{userId}/authentication/emailMethods/{id}"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "optional",
@@ -275,7 +275,7 @@
                             "mode": "iteration",
                             "table": "users",
                             "iterator": "id",
-                            "path": "/v1.0/users/{iterator}/authentication/externalAuthenticationMethods",
+                            "path": "v1.0/users/{iterator}/authentication/externalAuthenticationMethods",
                             "base": {
                                 "userId": "{iterator}"
                             }
@@ -295,7 +295,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{userId}/authentication/externalAuthenticationMethods"
+                            "path": "v1.0/users/{userId}/authentication/externalAuthenticationMethods"
                         },
                         "semantics": "create",
                         "resource_allowance_default": "optional",
@@ -312,7 +312,7 @@
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{userId}/authentication/externalAuthenticationMethods/{id}"
+                            "path": "v1.0/users/{userId}/authentication/externalAuthenticationMethods/{id}"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "optional",
@@ -342,7 +342,7 @@
                             "mode": "iteration",
                             "table": "users",
                             "iterator": "id",
-                            "path": "/v1.0/users/{iterator}/authentication/fido2Methods",
+                            "path": "v1.0/users/{iterator}/authentication/fido2Methods",
                             "base": {
                                 "userId": "{iterator}"
                             }
@@ -362,7 +362,7 @@
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{userId}/authentication/fido2Methods/{id}"
+                            "path": "v1.0/users/{userId}/authentication/fido2Methods/{id}"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "optional",
@@ -400,7 +400,7 @@
                             "mode": "iteration",
                             "table": "users",
                             "iterator": "id",
-                            "path": "/v1.0/users/{iterator}/authentication/microsoftAuthenticatorMethods",
+                            "path": "v1.0/users/{iterator}/authentication/microsoftAuthenticatorMethods",
                             "base": {
                                 "userId": "{iterator}"
                             }
@@ -420,7 +420,7 @@
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{userId}/authentication/microsoftAuthenticatorMethods/{id}"
+                            "path": "v1.0/users/{userId}/authentication/microsoftAuthenticatorMethods/{id}"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "optional",
@@ -454,7 +454,7 @@
                             "mode": "iteration",
                             "table": "users",
                             "iterator": "id",
-                            "path": "/v1.0/users/{iterator}/authentication/platformCredentialMethods",
+                            "path": "v1.0/users/{iterator}/authentication/platformCredentialMethods",
                             "base": {
                                 "userId": "{iterator}"
                             }
@@ -474,7 +474,7 @@
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{userId}/authentication/platformCredentialMethods/{id}"
+                            "path": "v1.0/users/{userId}/authentication/platformCredentialMethods/{id}"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "optional",
@@ -508,7 +508,7 @@
                             "mode": "iteration",
                             "table": "users",
                             "iterator": "id",
-                            "path": "/v1.0/users/{iterator}/authentication/phoneMethods",
+                            "path": "v1.0/users/{iterator}/authentication/phoneMethods",
                             "base": {
                                 "userId": "{iterator}"
                             }
@@ -528,7 +528,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{userId}/authentication/phoneMethods"
+                            "path": "v1.0/users/{userId}/authentication/phoneMethods"
                         },
                         "semantics": "create",
                         "resource_allowance_default": "optional",
@@ -546,7 +546,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{userId}/authentication/phoneMethods/{id}/enableSmsSignIn"
+                            "path": "v1.0/users/{userId}/authentication/phoneMethods/{id}/enableSmsSignIn"
                         },
                         "body": {},
                         "resource_allowance_default": "optional",
@@ -564,7 +564,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{userId}/authentication/phoneMethods/{id}/enableSmsSignIn"
+                            "path": "v1.0/users/{userId}/authentication/phoneMethods/{id}/enableSmsSignIn"
                         },
                         "body": {},
                         "resource_allowance_default": "optional",
@@ -582,7 +582,7 @@
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{userId}/authentication/phoneMethods/{id}"
+                            "path": "v1.0/users/{userId}/authentication/phoneMethods/{id}"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "optional",
@@ -614,7 +614,7 @@
                             "mode": "iteration",
                             "table": "users",
                             "iterator": "id",
-                            "path": "/v1.0/users/{iterator}/authentication/softwareOathMethods",
+                            "path": "v1.0/users/{iterator}/authentication/softwareOathMethods",
                             "base": {
                                 "userId": "{iterator}"
                             }
@@ -634,7 +634,7 @@
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{userId}/authentication/softwareOathMethods/{id}"
+                            "path": "v1.0/users/{userId}/authentication/softwareOathMethods/{id}"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "optional",
@@ -662,7 +662,7 @@
                             "mode": "iteration",
                             "table": "users",
                             "iterator": "id",
-                            "path": "/v1.0/users/{iterator}/authentication/temporaryAccessPassMethods",
+                            "path": "v1.0/users/{iterator}/authentication/temporaryAccessPassMethods",
                             "base": {
                                 "userId": "{iterator}"
                             }
@@ -682,7 +682,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{userId}/authentication/temporaryAccessPassMethods"
+                            "path": "v1.0/users/{userId}/authentication/temporaryAccessPassMethods"
                         },
                         "semantics": "create",
                         "resource_allowance_default": "optional",
@@ -700,7 +700,7 @@
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{userId}/authentication/temporaryAccessPassMethods/{id}"
+                            "path": "v1.0/users/{userId}/authentication/temporaryAccessPassMethods/{id}"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "optional",
@@ -739,7 +739,7 @@
                             "mode": "iteration",
                             "table": "users",
                             "iterator": "id",
-                            "path": "/v1.0/users/{iterator}/authentication/WindowsHelloForBusinessMethods",
+                            "path": "v1.0/users/{iterator}/authentication/WindowsHelloForBusinessMethods",
                             "base": {
                                 "userId": "{iterator}"
                             }
@@ -759,7 +759,7 @@
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{userId}/authentication/WindowsHelloForBusinessMethods/{id}"
+                            "path": "v1.0/users/{userId}/authentication/WindowsHelloForBusinessMethods/{id}"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "optional",
@@ -789,7 +789,7 @@
                         "method": "get",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/informationProtection/bitlocker/recoveryKeys"
+                            "path": "v1.0/informationProtection/bitlocker/recoveryKeys"
                         },
                         "processing_options": {
                             "output_field": "value"
@@ -812,7 +812,7 @@
                             "mode": "iteration",
                             "table": "bitlocker_recoveryKeys",
                             "iterator": "id",
-                            "path": "/v1.0/informationProtection/bitlocker/recoveryKeys/{iterator}"
+                            "path": "v1.0/informationProtection/bitlocker/recoveryKeys/{iterator}"
                         },
                         "maxSessionCount": 20,
                         "graphExcludedFields": [
@@ -831,7 +831,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/devices",
+                            "path": "v1.0/devices",
                             "post_processing": "child_tables"
                         },
                         "semantics": "create",
@@ -844,7 +844,7 @@
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/devices/{id}"
+                            "path": "v1.0/devices/{id}"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "prohibited",
@@ -855,14 +855,14 @@
                     "devices_get": {
                         "method": "get",
                         "call": {
-                            "path": "/v1.0/devices"
+                            "path": "v1.0/devices"
                         }
                     },
                     "device_update": {
                         "method": "patch",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/devices/{id}",
+                            "path": "v1.0/devices/{id}",
                             "post_processing": "child_tables"
                         },
                         "semantics": "update",
@@ -906,7 +906,7 @@
                     "devices_localCredentials_get": {
                         "method": "get",
                         "call": {
-                            "path": "/v1.0/directory/deviceLocalCredentials"
+                            "path": "v1.0/directory/deviceLocalCredentials"
                         }
                     }
                 },
@@ -926,7 +926,7 @@
                             "mode": "iteration",
                             "table": "devices_localCredentials",
                             "iterator": "id",
-                            "path": "/v1.0/directory/deviceLocalCredentials/{iterator}",
+                            "path": "v1.0/directory/deviceLocalCredentials/{iterator}",
                             "base": {
                                 "deviceId": "{iterator}"
                             }
@@ -963,7 +963,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/devices/{device_id}/registerOwnered/$ref"
+                            "path": "v1.0/devices/{device_id}/registerOwnered/$ref"
                         },
                         "semantics": "create",
                         "resource_allowance_default": "prohibited",
@@ -981,7 +981,7 @@
                             "mode": "iteration",
                             "table": "devices",
                             "iterator": "id",
-                            "path": "/v1.0/devices/{iterator}/registeredOwners",
+                            "path": "v1.0/devices/{iterator}/registeredOwners",
                             "base": {
                                 "device_id": "{iterator}"
                             }
@@ -992,7 +992,7 @@
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/devices/{device_id}/members/{id}/$ref"
+                            "path": "v1.0/devices/{device_id}/members/{id}/$ref"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "prohibited",
@@ -1013,7 +1013,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/groups",
+                            "path": "v1.0/groups",
                             "post_processing": "child_tables"
                         },
                         "semantics": "create",
@@ -1044,7 +1044,7 @@
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/groups/{id}"
+                            "path": "v1.0/groups/{id}"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "prohibited",
@@ -1055,14 +1055,14 @@
                     "groups_get": {
                         "method": "get",
                         "call": {
-                            "path": "/v1.0/groups"
+                            "path": "v1.0/groups"
                         }
                     },
                     "group_update": {
                         "method": "patch",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/groups/{id}",
+                            "path": "v1.0/groups/{id}",
                             "post_processing": "child_tables"
                         },
                         "semantics": "update",
@@ -1153,13 +1153,88 @@
                     "visibility": "string"
                 }
             },
+            "mailboxSettings_automaticRepliesSettings": {
+                "operations": {
+                    "mailboxSettings_automaticRepliesSettings_get": {
+                        "method": "get",
+                        "maxPageCount": -1,
+                        "call": {
+                            "mode": "iteration",
+                            "table": "users",
+                            "iterator": "id",
+                            "path": "v1.0/users/{iterator}/mailboxSettings/automaticRepliesSetting",
+                            "base": {
+                                "userId": "{iterator}"
+                            }
+                        },
+                        "maxSessionCount": 10,
+                        "graphExcludedFields": [
+                            "userId"
+                        ],
+                        "warning_only": [
+                            404,0
+                        ]
+                    },
+                    "mailboxSettings_automaticRepliesSettingsUpdate": {
+                        "method": "patch",
+                        "call": {
+                            "mode": "normal",
+                            "path": "v1.0/users/{userId}/mailboxSettings",
+                            "post_processing": "child_tables"
+                        },
+                        "removeBlankFields": true,
+                        "body": {
+                            "automaticRepliesSetting": {
+                                "_nim_merge_attributes_": false,
+                                "status": "{status}",
+                                "externalAudience": "{externalAudience}",
+                                "internalReplyMessage": "{internalReplyMessage}",
+                                "externalReplyMessage": "{externalReplyMessage}",
+                                "scheduledStartDateTime": {
+                                    "dateTime": "{scheduledStartDateTime.dateTime}",
+                                    "timeZone": "{scheduledStartDateTime.timeZone}"
+                                },
+                                "scheduledEndDateTime": {
+                                    "dateTime": "{scheduledEndDateTime.dateTime}",
+                                    "timeZone": "{scheduledEndDateTime.timeZone}"
+                                }
+                            }
+                        },
+                        "semantics": "update",
+                        "resource_allowance_default": "optional",
+                        "resource_mandatory": [
+                            "userId"
+                        ],
+                        "resource_prohibited": [
+                            "@odata.context"
+                        ]
+                    }
+                },
+                "key": "userId",
+                "resources": {
+                    "@odata.context": "string",
+                    "userId": "string*",
+                    "status": "string*",
+                    "externalAudience": "string*",
+                    "internalReplyMessage": "string*",
+                    "externalReplyMessage": "string*",
+                    "scheduledStartDateTime": {
+                        "dateTime": "_:string*",
+                        "timeZone": "_:string*"
+                    },
+                    "scheduledEndDateTime": {
+                        "dateTime": "_:string*",
+                        "timeZone": "_:string*"
+                    }
+                }
+            },
             "members": {
                 "operations": {
                     "member_add": {
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/groups/{group_id}/members/$ref"
+                            "path": "v1.0/groups/{group_id}/members/$ref"
                         },
                         "semantics": "create",
                         "resource_allowance_default": "prohibited",
@@ -1177,7 +1252,7 @@
                             "mode": "iteration",
                             "table": "groups",
                             "iterator": "id",
-                            "path": "/v1.0/groups/{iterator}/members",
+                            "path": "v1.0/groups/{iterator}/members",
                             "base": {
                                 "group_id": "{iterator}"
                             }
@@ -1191,7 +1266,7 @@
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/groups/{group_id}/members/{id}/$ref"
+                            "path": "v1.0/groups/{group_id}/members/{id}/$ref"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "prohibited",
@@ -1224,19 +1299,22 @@
                         "method": "get",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/subscribedSkus"
+                            "path": "v1.0/subscribedSkus"
                         },
                         "maxPageCount": -1
                     }
                 },
                 "key": "skuId",
                 "resources": {
+                    "accountId": "string*",
+                    "accountName": "string*",
                     "appliesTo": "String*",
                     "capabilityStatus": "String*",
                     "consumedUnits": "Int32*",
                     "id": "string*",
                     "prepaidUnits": {
                         "enabled": "_:Int32*",
+                        "lockedOut": "_:Int32*",
                         "suspended": "_:Int32*",
                         "warning": "_:Int32*"
                     },
@@ -1244,12 +1322,14 @@
                         {
                             "servicePlanId": "Guid*",
                             "servicePlanName": "String*",
+                            "servicePlanType": "String*",
                             "provisioningStatus": "String*",
                             "appliesTo": "String*"
                         }
                     ],
                     "skuId": "Guid*",
-                    "skuPartNumber": "String*"
+                    "skuPartNumber": "String*",
+                    "subscriptionIds": "string*"
                 }
             },
             "license_members": {
@@ -1258,7 +1338,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{id}/assignLicense"
+                            "path": "v1.0/users/{id}/assignLicense"
                         },
                         "semantics": "create",
                         "resource_allowance_default": "prohibited",
@@ -1280,7 +1360,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{id}/assignLicense"
+                            "path": "v1.0/users/{id}/assignLicense"
                         },
                         "semantics": "create",
                         "resource_allowance_default": "prohibited",
@@ -1304,7 +1384,7 @@
                             "mode": "iteration",
                             "table": "licenses",
                             "iterator": "skuId",
-                            "path": "/v1.0/users?$filter=assignedLicenses/any(u:u/skuId eq {iterator}) ",
+                            "path": "v1.0/users?$filter=assignedLicenses/any(u:u/skuId eq {iterator}) ",
                             "base": {
                                 "skuId": "{iterator}"
                             }
@@ -1318,7 +1398,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{id}/assignLicense"
+                            "path": "v1.0/users/{id}/assignLicense"
                         },
                         "semantics": "create",
                         "resource_allowance_default": "prohibited",
@@ -1361,7 +1441,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/groups/{group_id}/owners/$ref"
+                            "path": "v1.0/groups/{group_id}/owners/$ref"
                         },
                         "semantics": "create",
                         "resource_allowance_default": "prohibited",
@@ -1379,7 +1459,7 @@
                             "mode": "iteration",
                             "table": "groups",
                             "iterator": "id",
-                            "path": "/v1.0/groups/{iterator}/owners",
+                            "path": "v1.0/groups/{iterator}/owners",
                             "base": {
                                 "group_id": "{iterator}"
                             }
@@ -1390,7 +1470,7 @@
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/groups/{group_id}/owners/{id}/$ref"
+                            "path": "v1.0/groups/{group_id}/owners/{id}/$ref"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "prohibited",
@@ -1423,7 +1503,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/teams/{id}/archive",
+                            "path": "v1.0/teams/{id}/archive",
                             "post_processing": "child_tables"
                         },
                         "semantics": "set",
@@ -1436,7 +1516,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/teams",
+                            "path": "v1.0/teams",
                             "post_processing": "child_tables"
                         },
                         "semantics": "create",
@@ -1469,7 +1549,7 @@
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/groups/{id}"
+                            "path": "v1.0/groups/{id}"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "prohibited",
@@ -1488,7 +1568,7 @@
                                 "operation": "contains",
                                 "value": "Team"
                             },
-                            "path": "/v1.0/teams/{iterator}"
+                            "path": "v1.0/teams/{iterator}"
                         },
                         "maxPageCount": -1,
                         "maxSessionCount": 20
@@ -1497,7 +1577,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/teams/{id}/unarchive",
+                            "path": "v1.0/teams/{id}/unarchive",
                             "post_processing": "child_tables"
                         },
                         "semantics": "set",
@@ -1510,7 +1590,7 @@
                         "method": "patch",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/teams/{id}",
+                            "path": "v1.0/teams/{id}",
                             "post_processing": "child_tables"
                         },
                         "semantics": "update",
@@ -1581,7 +1661,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users",
+                            "path": "v1.0/users",
                             "post_processing": "child_tables"
                         },
                         "semantics": "create",
@@ -1623,7 +1703,7 @@
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{id}"
+                            "path": "v1.0/users/{id}"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "prohibited",
@@ -1634,7 +1714,7 @@
                     "users_get": {
                         "method": "get",
                         "call": {
-                            "path": "/v1.0/users",
+                            "path": "v1.0/users",
                             "queryParameters": {
                                 "$expand": "manager"
                             }
@@ -1644,7 +1724,7 @@
                         "method": "put",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{id}/manager/$ref"
+                            "path": "v1.0/users/{id}/manager/$ref"
                         },
                         "body": {
                             "_nim_merge_attributes_": false,
@@ -1661,7 +1741,7 @@
                         "method": "delete",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{id}/manager/$ref"
+                            "path": "v1.0/users/{id}/manager/$ref"
                         },
                         "resource_allowance_default": "prohibited",
                         "resource_mandatory": [
@@ -1672,7 +1752,7 @@
                         "method": "patch",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{id}",
+                            "path": "v1.0/users/{id}",
                             "post_processing": "child_tables"
                         },
                         "semantics": "update",
@@ -1713,7 +1793,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{id}/revokeSignInSessions",
+                            "path": "v1.0/users/{id}/revokeSignInSessions",
                             "post_processing": "child_tables"
                         },
                         "resource_allowance_default": "prohibited",
@@ -1725,7 +1805,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/users/{id}/authentication/temporaryAccessPassMethods"
+                            "path": "v1.0/users/{id}/authentication/temporaryAccessPassMethods"
                         },
                         "resource_allowance_default": "optional",
                         "resource_mandatory": [
@@ -1982,7 +2062,7 @@
                         "method": "get",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/identityProtection/riskyUsers"
+                            "path": "v1.0/identityProtection/riskyUsers"
                         },
                         "processing_options": {
                             "output_field": "value"
@@ -1992,7 +2072,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/identityProtection/riskyUsers/confirmCompromised"
+                            "path": "v1.0/identityProtection/riskyUsers/confirmCompromised"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "prohibited",
@@ -2009,7 +2089,7 @@
                         "method": "post",
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/identityProtection/riskyUsers/dismiss"
+                            "path": "v1.0/identityProtection/riskyUsers/dismiss"
                         },
                         "semantics": "delete",
                         "resource_allowance_default": "prohibited",
@@ -2043,7 +2123,7 @@
                         "call": {
                             "mode": "normal",
                             
-                            "path": "/beta/reports/getOffice365ActiveUserDetail(period='D30')",
+                            "path": "beta/reports/getOffice365ActiveUserDetail(period='D30')",
                             "queryParameters": {
                                 "$format": "application/json"
                             }
@@ -2117,7 +2197,7 @@
 
                         "call": {
                             "mode": "normal",
-                            "path": "/v1.0/reports/authenticationMethods/userRegistrationDetails"
+                            "path": "v1.0/reports/authenticationMethods/userRegistrationDetails"
                         },
                         "processing_options": {
                             "output_field": "value"
