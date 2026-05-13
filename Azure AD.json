@@ -1172,7 +1172,7 @@
                             "userId"
                         ],
                         "warning_only": [
-                            404,0
+                            404,503,0
                         ]
                     },
                     "mailboxSettings_automaticRepliesSettingsUpdate": {
