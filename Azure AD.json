@@ -2116,6 +2116,58 @@
                     "userPrincipalName": "string*"
                 }
             },
+            "report_teamsUserActivityUserDetail": {
+                "operations": {
+                    "report_teamsUserActivityUserDetail_get": {
+                        "method": "get",
+                        "call": {
+                        "mode": "normal",
+                        "queryParametersConfig": {
+                            "doNotSendIfEmpty": true
+                        },
+                        "queryParameters": {},
+                        "path": "/v1.0/reports/getTeamsUserActivityUserDetail(period='D90')"
+                        },
+                        "selector": { "mode": "none" }
+                    }
+                },
+                "key": "userPrincipalName",
+                "resources": {
+                    "Report Refresh Date": "reportRefreshDate:string*",
+                    "User Id": "userId:string*",
+                    "User Principal Name": "userPrincipalName:string*",
+                    "Last Activity Date": "lastActivityDate:string*",
+                    "Is Deleted": "isDeleted:boolean*",
+                    "Deleted Date": "deletedDate:string*",
+                    "Assigned Products": "assignedProducts:string*",
+                    "Team Chat Message Count": "teamChatMessageCount:string*",
+                    "Private Chat Message Count": "privateChatMessageCount:string*",
+                    "Call Count": "callCount:string*",
+                    "Meeting Count": "meetingCount:string*",
+                    "Meetings Organized Count": "meetingsOrganizedCount:string*",
+                    "Meetings Attended Count": "meetingsAttendedCount:string*",
+                    "Ad Hoc Meetings Organized Count": "adHocMeetingsOrganizedCount:string*",
+                    "Ad Hoc Meetings Attended Count": "adHocMeetingsAttendedCount:string*",
+                    "Scheduled One-time Meetings Organized Count": "scheduledOneTimeMeetingsOrganizedCount:string*",
+                    "Scheduled One-time Meetings Attended Count": "scheduledOneTimeMeetingsAttendedCount:string*",
+                    "Scheduled Recurring Meetings Organized Count": "scheduledRecurringMeetingsOrganizedCount:string*",
+                    "Scheduled Recurring Meetings Attended Count": "scheduledRecurringMeetingsAttendedCount:string*",
+                    "Audio Duration": "audioDuration:string*",
+                    "Video Duration": "videoDuration:string*",
+                    "Screen Share Duration": "screenShareDuration:string*",
+                    "Audio Duration In Seconds": "audioDurationInSeconds:string*",
+                    "Video Duration In Seconds": "videoDurationInSeconds:string*",
+                    "Screen Share Duration In Seconds": "screenShareDurationInSeconds:string*",
+                    "Has Other Action": "hasOtherAction:boolean*",
+                    "Urgent Messages": "urgentMessages:string*",
+                    "Post Messages": "postMessages:string*",
+                    "Tenant Display Name": "tenantDisplayName:string*",
+                    "Shared Channel Tenant Display Names": ["string*"],
+                    "Reply Messages": "replyMessages:string*",
+                    "Is Licensed": "isLicensed:boolean*",
+                    "Report Period": "reportPeriod:string*"
+                }
+            },
             "report_office365ActiveUserDetails": {
                 "operations": {
                     "report_office365ActiveUserDetails_get": {
@@ -2240,6 +2292,30 @@
             "call_handling": "azure",
             "test_connection": {
                 "url": "/v1.0/users"
+            },
+            "wizard": {
+                "type": "entra",
+                "permissions": [
+                    "AdministrativeUnit.Read.All",
+                    "AdministrativeUnit.ReadWrite.All",
+                    "BitlockerKey.Read.All",
+                    "Device.Read.All",
+                    "Device.ReadWrite.All",
+                    "Directory.Read.All",
+                    "Directory.ReadWrite.All",
+                    "Group.Read.All",
+                    "Group.ReadWrite.All",
+                    "IdentityRiskEvent.Read.All",
+                    "IdentityRiskyUser.Read.All",
+                    "IdentityRiskyUser.ReadWrite.All",
+                    "Organization.Read.All",
+                    "Reports.Read.All",
+                    "Team.ReadBasic.All",
+                    "TeamSettings.ReadWrite.All",
+                    "User.ReadWrite.All",
+                    "UserAuthenticationMethod.Read.All",
+                    "UserAuthenticationMethod.ReadWrite.All"
+                ]
             }
         },
         "authOptions": {
@@ -2282,6 +2358,17 @@
                 }
             }
         }
+    },
+    "connection": {
+        "items": [
+            {
+                "order": 1,
+                "name": "config_wizard",
+                "type": "wizard",
+                "label": "This system can be configured automatically using a configuration wizard. This will connect to Entra and create the needed app registration with the correct permissions and certificate authentication.",
+                "text": "Start"
+            }
+        ]
     },
     "config_scenarios": [
         {
