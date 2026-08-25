@@ -209,8 +209,13 @@
                         "method": "get",
                         "call": {
                             "mode": "iteration",
-                            "table": "users",
+                            "table": "report_userRegistrationDetails",
                             "iterator": "id",
+                            "filter": {
+                                "attribute": "methodsRegistered",
+                                "operation": "regex",
+                                "value": ".*email.*"
+                            },
                             "path": "v1.0/users/{iterator}/authentication/emailMethods",
                             "base": {
                                 "userId": "{iterator}"
@@ -273,8 +278,12 @@
                         "method": "get",
                         "call": {
                             "mode": "iteration",
-                            "table": "users",
+                            "table": "report_userRegistrationDetails",
                             "iterator": "id",
+                            "filter": {
+                                "attribute": "methodsRegistered",
+                                "operation": "exists"
+                            },
                             "path": "v1.0/users/{iterator}/authentication/externalAuthenticationMethods",
                             "base": {
                                 "userId": "{iterator}"
@@ -340,8 +349,13 @@
                         "method": "get",
                         "call": {
                             "mode": "iteration",
-                            "table": "users",
+                            "table": "report_userRegistrationDetails",
                             "iterator": "id",
+                            "filter": {
+                                "attribute": "methodsRegistered",
+                                "operation": "regex",
+                                "value": ".*([pP]ass[Kk]ey[Dd]evice[Bb]ound[Aa]uthenticator|[pP]ass[Kk]ey[Dd]evice[Bb]ound).*"
+                            },
                             "path": "v1.0/users/{iterator}/authentication/fido2Methods",
                             "base": {
                                 "userId": "{iterator}"
@@ -398,8 +412,13 @@
                         "method": "get",
                         "call": {
                             "mode": "iteration",
-                            "table": "users",
+                            "table": "report_userRegistrationDetails",
                             "iterator": "id",
+                            "filter": {
+                                "attribute": "methodsRegistered",
+                                "operation": "regex",
+                                "value": ".*microsoftAuthenticator.*"
+                            },
                             "path": "v1.0/users/{iterator}/authentication/microsoftAuthenticatorMethods",
                             "base": {
                                 "userId": "{iterator}"
@@ -452,8 +471,12 @@
                         "method": "get",
                         "call": {
                             "mode": "iteration",
-                            "table": "users",
+                            "table": "report_userRegistrationDetails",
                             "iterator": "id",
+                            "filter": {
+                                "attribute": "methodsRegistered",
+                                "operation": "exists"
+                            },
                             "path": "v1.0/users/{iterator}/authentication/platformCredentialMethods",
                             "base": {
                                 "userId": "{iterator}"
@@ -467,7 +490,7 @@
                             "userId"
                         ],
                         "warning_only": [
-                            404
+                            404,0
                         ]
                     },
                     "auth_platformCredentialMethods_delete": {
@@ -506,8 +529,13 @@
                         "method": "get",
                         "call": {
                             "mode": "iteration",
-                            "table": "users",
+                            "table": "report_userRegistrationDetails",
                             "iterator": "id",
+                            "filter": {
+                                "attribute": "methodsRegistered",
+                                "operation": "regex",
+                                "value": ".*[pP][hH][oO][nN][eE]$"
+                            },
                             "path": "v1.0/users/{iterator}/authentication/phoneMethods",
                             "base": {
                                 "userId": "{iterator}"
@@ -612,8 +640,13 @@
                         "method": "get",
                         "call": {
                             "mode": "iteration",
-                            "table": "users",
+                            "table": "report_userRegistrationDetails",
                             "iterator": "id",
+                            "filter": {
+                                "attribute": "methodsRegistered",
+                                "operation": "regex",
+                                "value": ".*softwareOneTimePasscode.*"
+                            },
                             "path": "v1.0/users/{iterator}/authentication/softwareOathMethods",
                             "base": {
                                 "userId": "{iterator}"
@@ -660,8 +693,13 @@
                         "method": "get",
                         "call": {
                             "mode": "iteration",
-                            "table": "users",
+                            "table": "report_userRegistrationDetails",
                             "iterator": "id",
+                            "filter": {
+                                "attribute": "methodsRegistered",
+                                "operation": "regex",
+                                "value": ".*temporaryAccessPass.*"
+                            },
                             "path": "v1.0/users/{iterator}/authentication/temporaryAccessPassMethods",
                             "base": {
                                 "userId": "{iterator}"
@@ -737,8 +775,13 @@
                         "method": "get",
                         "call": {
                             "mode": "iteration",
-                            "table": "users",
+                            "table": "report_userRegistrationDetails",
                             "iterator": "id",
+                            "filter": {
+                                "attribute": "methodsRegistered",
+                                "operation": "regex",
+                                "value": ".*windowsHelloForBusiness.*"
+                            },
                             "path": "v1.0/users/{iterator}/authentication/WindowsHelloForBusinessMethods",
                             "base": {
                                 "userId": "{iterator}"
