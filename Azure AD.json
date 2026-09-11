@@ -5419,6 +5419,49 @@
                     "webUrl": "string"
                 }
             },
+            "teams_userConfigurations": {
+                "operations": {
+                    "teams_get": {
+                        "method": "get",
+                        "call": {
+                            "mode": "normal",
+                            "path": "v1.0/admin/teams/userConfigurations",
+                            "processing_options": {
+                                "output_field":"value"
+                            }
+                        }
+                    }
+                },
+                "key": "id",
+                "resources": {
+                    "@odata.context": "string",
+                    "id": "string*",
+                    "userPrincipalName": "string*",
+                    "tenantId": "string*",
+                    "effectivePolicyAssignments": [
+                        {
+                            "policyType": "string*",
+                            "policyAssignment": {
+                                "displayName": "_:string*",
+                                "assignmentType": "_:string*",
+                                "policyId": "_:string*",
+                                "groupId": "_:string*"
+                            }
+                        }
+                    ],
+                    "telephoneNumbers": [
+                        {
+                            "telephoneNumber": "string*",
+                            "assignmentCategory": "string*"
+                        }
+                    ],
+                    "isEnterpriseVoiceEnabled": "boolean*",
+                    "featureTypes": ["string*"],
+                    "accountType": "string*",
+                    "createdDateTime": "string*",
+                    "modifiedDateTime": "string*"
+                }
+            },
             "users": {
                 "operations": {
                     "user_create": {
