@@ -1,4 +1,7 @@
 # Microsoft Azure AD
+
+Read the [Microsoft Entra ID integration documentation](https://docs.nimsuite.com/en/integrations/microsoft-entra-id) for connector details and related guides.
+
 <img src="https://github.com/Tools4ever-NIM/NIM-System-REST-Azure-AD/assets/24281600/239a653a-3e96-43b7-b07b-a8af1d055f99" width="256px" />
 
 
