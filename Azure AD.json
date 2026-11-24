@@ -1986,6 +1986,17 @@
                             "isUsable",
                             "methodUsabilityReason"
                         ]
+                    },
+                    "user_sponsor_add": {
+                        "method": "post",
+                        "call": {
+                            "mode": "normal",
+                            "path": "v1.0/users/{id}/sponsors/$ref",
+                            "post_processing": "child_tables"
+                        },
+						"body": {
+						  "@odata.id": "https://graph.microsoft.com/v1.0/users/{sponsor_id}"
+						},							
                         "resource_allowance_default": "prohibited",
                         "resource_mandatory": [
 							"id",
@@ -1998,7 +2009,12 @@
                             "mode": "normal",
                             "path": "v1.0/users/{id}/sponsors/{sponsor_id}/$ref"
                         },
+                        "semantics": "delete",
                         "resource_allowance_default": "prohibited",
+                        "resource_mandatory": [
+							"id",
+                            "sponsor_id"
+                        ]
                     }
                 },
                 "key": "id",
@@ -2152,7 +2168,12 @@
                     "temporaryAccessPass": "string",
                     "startDateTime": "string",
                     "lifetimeInMinutes": "string",
-                    "isUsableOnce": "string"
+                    "isUsableOnce": "string",
+                    "sponsor_id": "string"
+                }
+            },
+            "user_sponsors": {
+                "operations": {
                     "user_sponsor_get": {
 						"method": "get",
 						"call": {
